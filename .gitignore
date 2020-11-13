@@ -24,4 +24,6 @@ coverage
 build/
 dist/
 
-.eslintrc.js
+./.eslintrc.js
+./db/jsons/
+package-lock.json
