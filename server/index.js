@@ -14,6 +14,13 @@ app.get('/api/listings/', (req, res) => {
     res.send(JSON.stringify(listings, 0, 2))
   })
 });
+app.get('/api/listings/:id', (req, res) => {
+  Helpers.listingModel.find({id:req.params.id})
+  .then((listings) => {
+    res.header("Content-Type", 'application/json');
+    res.send(JSON.stringify(listings, 0, 2))
+  })
+});
 app.get('/api/calendars/', (req, res) => {
   Helpers.calendarModel.find()
   .then((listings) => {
@@ -21,7 +28,13 @@ app.get('/api/calendars/', (req, res) => {
     res.send(JSON.stringify(listings, 0, 2))
   })
 });
-
+app.get('/api/calendars/:id', (req, res) => {
+  Helpers.calendarModel.find({_id:req.params.id})
+  .then((listings) => {
+    res.header("Content-Type", 'application/json');
+    res.send(JSON.stringify(listings, 0, 2))
+  })
+});
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`)
 })

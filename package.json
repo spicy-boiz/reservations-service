@@ -8,8 +8,8 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "server" : "node ./server/index.js",
-    "seed" : "node ./db/seed"
+    "server": "node ./server/index.js",
+    "seed": "node ./db/seed"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -17,6 +17,12 @@
     "mongoose": "^5.10.14"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0"
   }
 }
