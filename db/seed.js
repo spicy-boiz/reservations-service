@@ -3,7 +3,7 @@
 const helpers = require('./helpers.js');
 
 const seedDatabase = (entryCount, startYear, endYear) => {
-  const years = helpers.generateYears(startYear, endYear);
+  const years = helpers.generateYear(startYear, endYear);
   const calendars = (new Array(entryCount)).fill({ days: years });
   helpers.calendarModel.insertMany(calendars)
     .then((createdCalendars) => {

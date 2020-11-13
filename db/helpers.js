@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const faker = require('faker');
 const mongoose = require('mongoose');
 /**
@@ -33,7 +34,7 @@ function generateListingOwner() {
   return `${faker.name.firstName()} ${faker.name.lastName()}`;
 }
 function generateListingName() {
-  const [generate] = faker.address;
+  const generate = faker.address;
   const randomSuffixes = [generate.streetSuffix, generate.secondaryAddress, generate.streetName];
   return `${faker.company.companyName()} ${faker.commerce.department()} ${randomSuffixes[Math.floor(Math.random() * randomSuffixes.length)]()}`;
 }
@@ -68,23 +69,21 @@ function generateDate(year, dayNum) {
   return date;
 }
 function generateYear(year) {
-  const dates = [];
+  let dates = [];
+  const months = Array.from(new Array(12), () => []);
   for (let i = 1; i <= 365; i += 1) {
     dates.push(generateDate(year, i));
   }
+  dates = dates.reduce((acc, dayObj) => {
+    const monthNum = dayObj.day.split('-')[0];
+    acc[monthNum - 1].push(dayObj);
+    return acc;
+  }, months);
   return dates;
 }
-function generateYears(startYear, endYear = startYear) {
-  const years = [];
-  for (let year = startYear; year <= endYear; year += 1) {
-    years.push(generateYear(year));
-  }
-  return years;
-}
-
 module.exports = {
   generateListing,
-  generateYears,
+  generateYear,
   calendarModel: Calendar,
   listingModel: Listing,
 };

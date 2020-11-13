@@ -12,7 +12,7 @@ mongoose.connect('mongodb://localhost/FEC', { useNewUrlParser: true });
 app.get('/api/listings/', (req, res) => {
   Helpers.listingModel.find()
     .then((listings) => {
-      res.header('Content-Type', 'text/plain');
+      res.header('Content-Type', 'application/json');
       res.send(JSON.stringify(listings, 0, 2));
     });
 });
@@ -26,7 +26,7 @@ app.get('/api/listings/:id', (req, res) => {
 app.get('/api/calendars/', (req, res) => {
   Helpers.calendarModel.find()
     .then((listings) => {
-      res.header('Content-Type', 'text/plain');
+      res.header('Content-Type', 'application/json');
       res.send(JSON.stringify(listings, 0, 2));
     });
 });
