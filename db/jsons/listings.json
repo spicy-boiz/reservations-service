@@ -1,0 +1,45 @@
+MongoDB shell version v4.4.1
+connecting to: mongodb://127.0.0.1:27017/FEC?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("1fd1ee5d-0244-4b9c-8a39-382766cd92b4") }
+MongoDB server version: 4.4.1
+{
+	"_id" : ObjectId("5fadc93a354d0bb84afda269"),
+	"id" : 0,
+	"owner" : "Jennifer Keeling",
+	"name" : "Lebsack, Schmeler and Kuhic Health Villages",
+	"calendar" : ObjectId("5fadc939354d0bb84afda264"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("5fadc93a354d0bb84afda26a"),
+	"id" : 1,
+	"owner" : "Johnathon Stehr",
+	"name" : "Douglas Inc Clothing Apt. 618",
+	"calendar" : ObjectId("5fadc939354d0bb84afda265"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("5fadc93a354d0bb84afda26b"),
+	"id" : 2,
+	"owner" : "Sean Hane",
+	"name" : "Rempel - Harvey Sports Suite 363",
+	"calendar" : ObjectId("5fadc939354d0bb84afda266"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("5fadc93a354d0bb84afda26c"),
+	"id" : 3,
+	"owner" : "Elizabeth Bins",
+	"name" : "Ortiz - Graham Movies Suite 052",
+	"calendar" : ObjectId("5fadc939354d0bb84afda267"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("5fadc93a354d0bb84afda26d"),
+	"id" : 4,
+	"owner" : "Theo Auer",
+	"name" : "Langosh, Leannon and Homenick Automotive Suite 290",
+	"calendar" : ObjectId("5fadc939354d0bb84afda268"),
+	"__v" : 0
+}
+bye

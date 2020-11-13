@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "reservations-service",
   "version": "",
   "description": "",
   "author": "",
@@ -8,8 +8,13 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "server" : "node ./server/index.js",
+    "seed" : "node ./db/seed"
   },
   "dependencies": {
+    "express": "^4.17.1",
+    "faker": "^5.1.0",
+    "mongoose": "^5.10.14"
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
