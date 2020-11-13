@@ -1,45 +1,146 @@
 MongoDB shell version v4.4.1
 connecting to: mongodb://127.0.0.1:27017/FEC?compressors=disabled&gssapiServiceName=mongodb
-Implicit session: session { "id" : UUID("1fd1ee5d-0244-4b9c-8a39-382766cd92b4") }
+Implicit session: session { "id" : UUID("58f12fd5-ee1c-4068-9352-b05b079de776") }
 MongoDB server version: 4.4.1
 {
-	"_id" : ObjectId("5fadc93a354d0bb84afda269"),
+	"_id" : ObjectId("5faef77060813d797d6c396f"),
 	"id" : 0,
-	"owner" : "Jennifer Keeling",
-	"name" : "Lebsack, Schmeler and Kuhic Health Villages",
-	"calendar" : ObjectId("5fadc939354d0bb84afda264"),
-	"__v" : 0
+	"owner" : "Rodrigo Lang",
+	"name" : "Feest, Langosh and Lemke Jewelery Lodge",
+	"calendar" : ObjectId("5faef76d60813d797d6c390b")
 }
 {
-	"_id" : ObjectId("5fadc93a354d0bb84afda26a"),
+	"_id" : ObjectId("5faef77060813d797d6c3970"),
 	"id" : 1,
-	"owner" : "Johnathon Stehr",
-	"name" : "Douglas Inc Clothing Apt. 618",
-	"calendar" : ObjectId("5fadc939354d0bb84afda265"),
-	"__v" : 0
+	"owner" : "Tony Schumm",
+	"name" : "Cruickshank - Abernathy Health Apt. 296",
+	"calendar" : ObjectId("5faef76d60813d797d6c390c")
 }
 {
-	"_id" : ObjectId("5fadc93a354d0bb84afda26b"),
+	"_id" : ObjectId("5faef77060813d797d6c3971"),
 	"id" : 2,
-	"owner" : "Sean Hane",
-	"name" : "Rempel - Harvey Sports Suite 363",
-	"calendar" : ObjectId("5fadc939354d0bb84afda266"),
-	"__v" : 0
+	"owner" : "Rossie Beatty",
+	"name" : "Collier, Daniel and Powlowski Games Ports",
+	"calendar" : ObjectId("5faef76d60813d797d6c390d")
 }
 {
-	"_id" : ObjectId("5fadc93a354d0bb84afda26c"),
+	"_id" : ObjectId("5faef77060813d797d6c3972"),
 	"id" : 3,
-	"owner" : "Elizabeth Bins",
-	"name" : "Ortiz - Graham Movies Suite 052",
-	"calendar" : ObjectId("5fadc939354d0bb84afda267"),
-	"__v" : 0
+	"owner" : "Loren Vandervort",
+	"name" : "Schulist - Fadel Automotive Passage",
+	"calendar" : ObjectId("5faef76d60813d797d6c390e")
 }
 {
-	"_id" : ObjectId("5fadc93a354d0bb84afda26d"),
+	"_id" : ObjectId("5faef77060813d797d6c3973"),
 	"id" : 4,
-	"owner" : "Theo Auer",
-	"name" : "Langosh, Leannon and Homenick Automotive Suite 290",
-	"calendar" : ObjectId("5fadc939354d0bb84afda268"),
-	"__v" : 0
+	"owner" : "Luis DuBuque",
+	"name" : "Christiansen - Crist Movies Brook",
+	"calendar" : ObjectId("5faef76d60813d797d6c390f")
 }
+{
+	"_id" : ObjectId("5faef77060813d797d6c3974"),
+	"id" : 5,
+	"owner" : "Idella Ortiz",
+	"name" : "Thompson, Nicolas and Corwin Grocery Inlet",
+	"calendar" : ObjectId("5faef76d60813d797d6c3910")
+}
+{
+	"_id" : ObjectId("5faef77060813d797d6c3975"),
+	"id" : 6,
+	"owner" : "Elissa Wiza",
+	"name" : "Spencer - Collier Jewelery Loop",
+	"calendar" : ObjectId("5faef76d60813d797d6c3911")
+}
+{
+	"_id" : ObjectId("5faef77060813d797d6c3976"),
+	"id" : 7,
+	"owner" : "Alison Huels",
+	"name" : "Hagenes and Sons Beauty Burg",
+	"calendar" : ObjectId("5faef76d60813d797d6c3912")
+}
+{
+	"_id" : ObjectId("5faef77060813d797d6c3977"),
+	"id" : 8,
+	"owner" : "Roberto Kuvalis",
+	"name" : "Breitenberg, Anderson and Nolan Games Stream",
+	"calendar" : ObjectId("5faef76d60813d797d6c3913")
+}
+{
+	"_id" : ObjectId("5faef77060813d797d6c3978"),
+	"id" : 9,
+	"owner" : "Murphy Tillman",
+	"name" : "Renner LLC Movies Fae Drive",
+	"calendar" : ObjectId("5faef76d60813d797d6c3914")
+}
+{
+	"_id" : ObjectId("5faef77060813d797d6c3979"),
+	"id" : 10,
+	"owner" : "Baby Rosenbaum",
+	"name" : "Schuster, Stracke and Mann Automotive Walker Landing",
+	"calendar" : ObjectId("5faef76d60813d797d6c3915")
+}
+{
+	"_id" : ObjectId("5faef77060813d797d6c397a"),
+	"id" : 11,
+	"owner" : "Kameron Barrows",
+	"name" : "Collier Group Grocery Lock",
+	"calendar" : ObjectId("5faef76d60813d797d6c3916")
+}
+{
+	"_id" : ObjectId("5faef77060813d797d6c397b"),
+	"id" : 12,
+	"owner" : "Leann Kessler",
+	"name" : "Waelchi Inc Electronics Trail",
+	"calendar" : ObjectId("5faef76d60813d797d6c3917")
+}
+{
+	"_id" : ObjectId("5faef77060813d797d6c397c"),
+	"id" : 13,
+	"owner" : "Gail Schimmel",
+	"name" : "Schmitt, Bogisich and Weissnat Clothing Dandre Shoal",
+	"calendar" : ObjectId("5faef76d60813d797d6c3918")
+}
+{
+	"_id" : ObjectId("5faef77060813d797d6c397d"),
+	"id" : 14,
+	"owner" : "Zachary McLaughlin",
+	"name" : "Kling - Dickens Clothing Witting Skyway",
+	"calendar" : ObjectId("5faef76d60813d797d6c3919")
+}
+{
+	"_id" : ObjectId("5faef77060813d797d6c397e"),
+	"id" : 15,
+	"owner" : "Jaylin Schulist",
+	"name" : "Wintheiser, Nicolas and Gorczany Clothing Canyon",
+	"calendar" : ObjectId("5faef76d60813d797d6c391a")
+}
+{
+	"_id" : ObjectId("5faef77060813d797d6c397f"),
+	"id" : 16,
+	"owner" : "Arturo Mitchell",
+	"name" : "Carroll LLC Clothing Schneider Forges",
+	"calendar" : ObjectId("5faef76d60813d797d6c391b")
+}
+{
+	"_id" : ObjectId("5faef77060813d797d6c3980"),
+	"id" : 17,
+	"owner" : "Eleanore Miller",
+	"name" : "Cruickshank - Gerhold Automotive Prairie",
+	"calendar" : ObjectId("5faef76d60813d797d6c391c")
+}
+{
+	"_id" : ObjectId("5faef77060813d797d6c3981"),
+	"id" : 18,
+	"owner" : "Crystal Kirlin",
+	"name" : "King, Romaguera and Cole Games Madison Skyway",
+	"calendar" : ObjectId("5faef76d60813d797d6c391d")
+}
+{
+	"_id" : ObjectId("5faef77060813d797d6c3982"),
+	"id" : 19,
+	"owner" : "Rosemary Bergnaum",
+	"name" : "Jacobs, West and Grimes Tools Circle",
+	"calendar" : ObjectId("5faef76d60813d797d6c391e")
+}
+Type "it" for more
 bye
