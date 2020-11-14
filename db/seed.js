@@ -1,11 +1,16 @@
 /* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
+const mongoose = require('mongoose');
 const helpers = require('./helpers.js');
+const models = require('./models.js');
+
+mongoose.connect('mongodb://localhost/FEC', { useNewUrlParser: true })
+  .catch((err) => console.error(err));
 
 const seedDatabase = (entryCount) => {
   const entries = new Array(entryCount).fill(undefined);
   const listings = entries.map((id, index) => helpers.generateListing(index));
-  helpers.listingModel.insertMany(listings)
+  models.listingModel.insertMany(listings)
     .then((createdListings) => console.log(`Number of Listings Created: ${createdListings.length}`))
     .catch((err) => console.error(err));
 };

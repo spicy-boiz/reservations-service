@@ -1,24 +1,5 @@
 /* eslint-disable no-console */
 const faker = require('faker');
-const mongoose = require('mongoose');
-/**
- * Schemas
- */
-mongoose.connect('mongodb://localhost/FEC', { useNewUrlParser: true })
-  .catch((err) => console.error(err));
-
-const listingSchema = new mongoose.Schema({
-  id: Number,
-  owner: String,
-  name: String,
-  reserved: [String],
-  fees: {
-    pernight: Number,
-    cleaning: Number,
-    service: Number,
-  },
-});
-const Listing = mongoose.model('Listing', listingSchema);
 
 /**
  * Fee Generation
@@ -53,5 +34,4 @@ function generateListing(count) {
 
 module.exports = {
   generateListing,
-  listingModel: Listing,
 };
