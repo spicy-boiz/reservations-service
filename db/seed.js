@@ -4,15 +4,16 @@ const mongoose = require('mongoose');
 const helpers = require('./helpers.js');
 const models = require('./models.js');
 
-mongoose.connect('mongodb://localhost/FEC', { useNewUrlParser: true })
-  .catch((err) => console.error(err));
-
 const seedDatabase = (entryCount) => {
+  mongoose.connect('mongodb://localhost/FEC', { useNewUrlParser: true })
+    .catch((err) => console.error(err));
   const entries = new Array(entryCount).fill(undefined);
   const listings = entries.map((id, index) => helpers.generateListing(index));
-  models.listingModel.insertMany(listings)
+  return models.listingModel.insertMany(listings)
     .then((createdListings) => console.log(`Number of Listings Created: ${createdListings.length}`))
     .catch((err) => console.error(err));
 };
 
-seedDatabase(100);
+seedDatabase(100)
+  .then(() => mongoose.disconnect())
+  .then(() => console.log('Disconnected'));

@@ -10,6 +10,7 @@ const models = require('../../db/models.js');
  * Unit Test
  */
 describe('Seeding functions', () => {
+  const mongoServer = new mms.MongoMemoryServer();
   describe('Listing Generation', () => {
     test('Creates an object with the keys: id, owner, name, reserved, and fees', () => {
       const expectedKeys = ['id', 'owner', 'name', 'reserved', 'fees'];
@@ -34,28 +35,33 @@ describe('Seeding functions', () => {
     });
   });
   describe('Database Seeding', () => {
-    beforeAll(async () => {
-      const mongoServer = new mms.MongoMemoryServer();
+    beforeEach(async () => {
       const mongoURi = await mongoServer.getUri();
       await mongoose.connect(mongoURi, { useNewUrlParser: true })
         .catch((err) => console.error(err));
+    });
+    afterEach(async () => {
+      await mongoose.disconnect();
+      await mongoServer.stop();
     });
     const expectedListing = {
       id: 0,
       owner: 'Dumbledore',
       name: 'Hogwarts',
-      reserved: ['1-20-2020'],
+      reserved: [new Date(2020, 0, 1)],
       fees: {
         pernight: 50,
         cleaning: 25,
         service: 15,
       },
     };
-    test('Listing can be sucessfully added into database', () => {
+    test('Listing can be sucessfully added into database', async () => {
       const newListing = new models.listingModel(expectedListing);
-      newListing.save()
-        .then((createdListing) => {
-          expect(createdListing).toEqual(newListing);
+      expect.assertions(1);
+      return newListing.save()
+        .then(() => (models.listingModel.find({ id: 0 }, { _id: 0, __v: 0 })))
+        .then((resObjects) => {
+          expect(resObjects[0].toObject()).toEqual(expectedListing);
         });
     });
   });
