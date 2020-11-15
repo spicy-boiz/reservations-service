@@ -1,25 +1,19 @@
-const helpers = require('./helpers.js');
+/* eslint-disable no-console */
+/* eslint-disable no-underscore-dangle */
 const mongoose = require('mongoose');
+const helpers = require('./helpers.js');
+const models = require('./models.js');
 
-var seedDatabase = function(entryCount, startYear, endYear) {
-  for (let count=0; count < entryCount;count++ ) {
-    let years = helpers.generateYears(startYear, endYear);
-    let calendar = new helpers.calendarModel({days: years});
-    calendar.save()
-    .then((addedCalendar)=>{
-      let listingData = helpers.generateListing(count);
-      listingData["calendar"] = addedCalendar._id;
-      let listing = new helpers.listingModel(listingData);
-      listing.save((err, doc) => {
-        if (err) {
-          console.error(err);
-        } else {
-          console.log(`Added to DB: Listing ${doc._id} Calendar ${addedCalendar._id}`)
-        }
-      })
-    })
-    .catch((err)=>console.error(err));
-  }
-}
+const seedDatabase = (entryCount) => {
+  mongoose.connect('mongodb://localhost/FEC', { useNewUrlParser: true })
+    .catch((err) => console.error(err));
+  const entries = new Array(entryCount).fill(undefined);
+  const listings = entries.map((id, index) => helpers.generateListing(index));
+  return models.listingModel.insertMany(listings)
+    .then((createdListings) => console.log(`Number of Listings Created: ${createdListings.length}`))
+    .catch((err) => console.error(err));
+};
 
-seedDatabase(1, 2020, 2020);
+seedDatabase(100)
+  .then(() => mongoose.disconnect())
+  .then(() => console.log('Disconnected'));
