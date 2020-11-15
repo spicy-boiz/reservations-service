@@ -1,12 +1,11 @@
 /* eslint-disable no-console */
 const express = require('express');
 const Helpers = require('../db/models.js');
-const mongoose = require('mongoose');
 
 const app = express();
 
-// app.use('/', express.json())
-mongoose.connect('mongodb://localhost/FEC', { useNewUrlParser: true });
+app.use('/', express.json());
+
 app.get('/api/listings/', (req, res) => {
   Helpers.listingModel.find()
     .then((listings) => {
