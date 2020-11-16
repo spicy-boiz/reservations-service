@@ -1,0 +1,30 @@
+.mainContainer {
+  max-width: 330px;
+  max-height: 250px;
+  margin: auto;
+  border: solid 1px rgb(221, 221, 221);
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0px 6px 16px rgb(221, 221, 221);
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1.5fr;
+  position: sticky;
+}
+.mainPrice {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+}
+.calendarReviews {
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 1;
+}
+.date-selection {
+  grid-column: 1 / span 2;
+  grid-row: 2 / span 1;
+}
+.reserveButton {
+  grid-column: 1 / span 2;
+  grid-row: 4 / span 1;
+}

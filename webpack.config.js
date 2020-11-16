@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   entry: path.join(__dirname, 'client', 'src', 'index.jsx'),
   output: {
-    path: path.join(__dirname, 'client', 'dist'),
+    path: path.join(__dirname, 'client', 'dist', 'build'),
     filename: 'bundle.js',
   },
   module: {
@@ -17,6 +17,27 @@ module.exports = {
             presets: ['@babel/preset-react', '@babel/preset-env'],
           },
         },
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
+      {
+        test: /\.css$/i,
+        exclude: /node_modules/,
+        use: ['style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[name]__[local]___[hash:base64:5]',
+              },
+            },
+          }],
       },
     ],
   },

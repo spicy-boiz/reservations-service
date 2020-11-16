@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Guests from './Guests.jsx';
 import DateSelection from './DateSelection.jsx';
 import GuestsDropDown from './GuestsDropDown.jsx';
+import styles from './App.css';
 
 function App(props) {
   const [dropBool, setDropBool] = useState(false);
@@ -20,19 +21,19 @@ function App(props) {
     }
   }
   return (
-    <div className="main-container">
-      <span className="main-price">
+    <div className={styles.mainContainer}>
+      <span className={styles.mainPrice}>
         $135/night
       </span>
-      <span className="calendar-reviews">
+      <span className={styles.calendarReviews}>
         4.96
       </span>
       <DateSelection />
-      <Guests dropdown={dropDownToggle} guestNum={guestsNum} />
+      <Guests dropdown={dropDownToggle} guestNum={guestsNum} dropBool={dropBool} />
       {dropBool && (
         <GuestsDropDown dropdown={dropDownToggle} changeGuests={changeGuests} />
       )}
-      <button className="reserve-button" type="submit">Check availability</button>
+      <button className={styles.reserveButton} type="submit">Check availability</button>
     </div>
   );
 }

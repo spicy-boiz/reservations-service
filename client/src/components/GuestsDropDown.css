@@ -1,0 +1,52 @@
+.guestDropdown {
+  background-color: white;
+  border: solid 1px rgb(221,221,221);
+  border-radius: 5px;
+  box-shadow: 0px 0.5px rgb(221, 221, 221);
+  position: absolute;
+  max-width: inherit;
+  min-height: 300px;
+  margin: 43% 24px 0% 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+#adultsTextCell {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+}
+#adultsButton {
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 1;
+}
+#childrenTextCell {
+  grid-column: 1 / span 1;
+  grid-row: 2 / span 1;
+}
+#childrenButton {
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+}
+#infantsTextCell{
+  grid-column: 1 / span 1;
+  grid-row: 3 / span 1;
+}
+#infantButton {
+  grid-column: 2 / span 1;
+  grid-row: 3 / span 1;
+}
+#dropdownBottomText {
+  grid-column: 1 / span 2;
+  grid-row: 4 / span 1;
+}
+#closeButton {
+  grid-column: 2 / span 2;
+  grid-row: 5 / span 1;
+}
+.minusButton, .addButton {
+  border-radius: 10px;
+}
+.disabledButton {
+  cursor: not-allowed;
+  opacity: 0.1;
+}

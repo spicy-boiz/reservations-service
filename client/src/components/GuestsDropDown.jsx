@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styles from './GuestsDropDown.css';
 
 function GuestsDropDown({ dropdown, changeGuests }) {
   const [adultsNum, setAdultsNum] = useState(1);
@@ -19,35 +20,35 @@ function GuestsDropDown({ dropdown, changeGuests }) {
     }
   }
   return (
-    <div className="guest-dropdown">
-      <div id="adult-dropdown-entry">Adults</div>
-      <div id="adult-dropdown-button">
-        <button className={`minus button ${adultsNum < 2 ? 'disabled' : ''}`} disabled={!(adultsNum - 1)} type="button" onClick={() => decNum(setAdultsNum, adultsNum)}>-</button>
+    <div className={styles.guestDropdown}>
+      <div id={styles.adultsTextCell}>Adults</div>
+      <div id={styles.adultsButton}>
+        <button className={`${styles.minusButton} ${adultsNum < 2 ? styles.disabledButton : ''}`} disabled={!(adultsNum - 1)} type="button" onClick={() => decNum(setAdultsNum, adultsNum)}>-</button>
         <text>{` ${adultsNum} `}</text>
-        <button className="add button" type="button" onClick={() => incNum(setAdultsNum, adultsNum)}>+</button>
+        <button className={styles.addButton} type="button" onClick={() => incNum(setAdultsNum, adultsNum)}>+</button>
       </div>
-      <div id="children-dropdown-entry">
+      <div id={styles.childrenTextCell}>
         <div>Children</div>
         <div>Ages 2-12</div>
       </div>
-      <div id="children-dropdown-button">
-        <button className={`minus button ${childrenNum < 1 ? 'disabled' : ''}`} disabled={!(childrenNum)} type="button" onClick={() => decNum(setChildrenNum, childrenNum)}>-</button>
+      <div id={styles.childrenButton}>
+        <button className={`${styles.minusButton} ${childrenNum < 2 ? styles.disabledButton : ''}`} disabled={!(childrenNum)} type="button" onClick={() => decNum(setChildrenNum, childrenNum)}>-</button>
         <text>{` ${childrenNum} `}</text>
-        <button className="add button" type="button" onClick={() => incNum(setChildrenNum, childrenNum)}>+</button>
+        <button className={styles.addButton} type="button" onClick={() => incNum(setChildrenNum, childrenNum)}>+</button>
       </div>
-      <div id="infant-dropdown-entry">
+      <div id={styles.infantsTextCell}>
         <div>Infants</div>
         <div>Under 2</div>
       </div>
-      <div id="infant-dropdown-button">
-        <button className={`minus button ${infantsNum < 1 ? 'disabled' : ''}`} disabled={!(infantsNum)} type="button" onClick={() => decNum(setInfantsNum, infantsNum)}>-</button>
+      <div id={styles.infantButton}>
+        <button className={`${styles.minusButton} ${infantsNum < 2 ? styles.disabledButton : ''}`} disabled={!(infantsNum)} type="button" onClick={() => decNum(setInfantsNum, infantsNum)}>-</button>
         <text>{` ${infantsNum} `}</text>
-        <button className="add button" type="button" onClick={() => incNum(setInfantsNum, infantsNum)}>+</button>
+        <button className={styles.addButton} type="button" onClick={() => incNum(setInfantsNum, infantsNum)}>+</button>
       </div>
-      <div id="max-dropdown-text">
+      <div id={styles.dropdownBottomText}>
         <text>{'6 guests maximum. Infants don\'t count toward the number of guests'}</text>
       </div>
-      <button id="dropdown-close-button" type="button" onClick={dropdown}>Close</button>
+      <button id={styles.closeButton} type="button" onClick={dropdown}>Close</button>
     </div>
   );
 }
