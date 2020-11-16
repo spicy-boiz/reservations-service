@@ -1,10 +1,12 @@
 /* eslint-disable no-console */
 const express = require('express');
+const path = require('path');
 const Helpers = require('../db/models.js');
 
 const app = express();
 
 app.use('/', express.json());
+app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 
 app.get('/api/listings/', (req, res) => {
   Helpers.listingModel.find()
