@@ -10,13 +10,14 @@
   "scripts": {
     "server": "node ./server/server.js",
     "seed": "node ./db/seed",
-    "build": "webpack --watch --config webpack.config.js",
+    "build": "webpack --watch --config webpack.config.js -d eval-cheap-module-source-map",
     "test": "jest"
   },
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^5.10.14",
     "path": "^0.12.7",
+    "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },

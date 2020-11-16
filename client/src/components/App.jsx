@@ -5,12 +5,19 @@ import GuestsDropDown from './GuestsDropDown.jsx';
 
 function App(props) {
   const [dropBool, setDropBool] = useState(false);
-  const [adultsNum, setAdultsNum] = useState(1);
-  const [childrenNum, setChildrenNum] = useState(0);
+  const [guestsNum, setGuests] = useState(1);
 
   function dropDownToggle() {
     setDropBool(!dropBool);
     console.log(dropBool);
+  }
+  function changeGuests(operation) {
+    if (operation === 'decrease') {
+      setGuests(guestsNum - 1);
+    }
+    if (operation === 'increase') {
+      setGuests(guestsNum + 1);
+    }
   }
   return (
     <div className="main-container">
@@ -21,9 +28,9 @@ function App(props) {
         4.96
       </span>
       <DateSelection />
-      <Guests dropdown={dropDownToggle} guestNum={adultsNum + childrenNum} />
+      <Guests dropdown={dropDownToggle} guestNum={guestsNum} />
       {dropBool && (
-        <GuestsDropDown />
+        <GuestsDropDown dropdown={dropDownToggle} changeGuests={changeGuests} />
       )}
       <button className="reserve-button" type="submit">Check availability</button>
     </div>
