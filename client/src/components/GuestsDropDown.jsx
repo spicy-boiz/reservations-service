@@ -21,32 +21,32 @@ function GuestsDropDown({ dropdown, changeGuests }) {
   }
   return (
     <div className={styles.guestDropdown}>
-      <div id={styles.adultsTextCell}>Adults</div>
-      <div id={styles.adultsButton}>
+      <div className={`${styles.adults} ${styles.cell}`}>Adults</div>
+      <div className={`${styles.adultsButton} ${styles.cell}`}>
         <button className={`${styles.minusButton} ${adultsNum < 2 ? styles.disabledButton : ''}`} disabled={!(adultsNum - 1)} type="button" onClick={() => decNum(setAdultsNum, adultsNum)}>-</button>
         <text>{` ${adultsNum} `}</text>
         <button className={styles.addButton} type="button" onClick={() => incNum(setAdultsNum, adultsNum)}>+</button>
       </div>
-      <div id={styles.childrenTextCell}>
+      <div className={`${styles.children} ${styles.cell}`}>
         <div>Children</div>
-        <div>Ages 2-12</div>
+        <div className={styles.ages}>Ages 2-12</div>
       </div>
-      <div id={styles.childrenButton}>
+      <div className={`${styles.childrenButton} ${styles.cell}`}>
         <button className={`${styles.minusButton} ${childrenNum < 2 ? styles.disabledButton : ''}`} disabled={!(childrenNum)} type="button" onClick={() => decNum(setChildrenNum, childrenNum)}>-</button>
         <text>{` ${childrenNum} `}</text>
         <button className={styles.addButton} type="button" onClick={() => incNum(setChildrenNum, childrenNum)}>+</button>
       </div>
-      <div id={styles.infantsTextCell}>
+      <div className={`${styles.infants} ${styles.cell}`}>
         <div>Infants</div>
-        <div>Under 2</div>
+        <div className={styles.ages}>Under 2</div>
       </div>
-      <div id={styles.infantButton}>
+      <div className={`${styles.infantsButton} ${styles.cell}`}>
         <button className={`${styles.minusButton} ${infantsNum < 2 ? styles.disabledButton : ''}`} disabled={!(infantsNum)} type="button" onClick={() => decNum(setInfantsNum, infantsNum)}>-</button>
         <text>{` ${infantsNum} `}</text>
         <button className={styles.addButton} type="button" onClick={() => incNum(setInfantsNum, infantsNum)}>+</button>
       </div>
       <div id={styles.dropdownBottomText}>
-        <text>{'6 guests maximum. Infants don\'t count toward the number of guests'}</text>
+        <text>{'6 guests maximum. Infants don\'t count toward the number of guests.'}</text>
       </div>
       <button id={styles.closeButton} type="button" onClick={dropdown}>Close</button>
     </div>

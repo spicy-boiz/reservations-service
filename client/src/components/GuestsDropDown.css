@@ -1,3 +1,6 @@
+* {
+  font-family: sans-serif;
+}
 .guestDropdown {
   background-color: white;
   border: solid 1px rgb(221,221,221);
@@ -5,48 +8,78 @@
   box-shadow: 0px 0.5px rgb(221, 221, 221);
   position: absolute;
   max-width: inherit;
-  min-height: 300px;
+  min-height: 285px;
   margin: 43% 24px 0% 24px;
+  padding: 16px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(5, 1fr);
 }
-#adultsTextCell {
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.adults.cell, .children.cell, .infants.cell {
+  align-items: flex-start;
+  flex-direction: column;
+  font-weight: 600;
+}
+.adultsButton.cell, .childrenButton.cell, .infantsButton.cell {
+  justify-content: space-between;
+  padding: 0 0 0 30%;
+}
+.adults.cell {
   grid-column: 1 / span 1;
   grid-row: 1 / span 1;
 }
-#adultsButton {
+.adultsButton.cell {
   grid-column: 2 / span 1;
   grid-row: 1 / span 1;
 }
-#childrenTextCell {
+.children.cell {
   grid-column: 1 / span 1;
   grid-row: 2 / span 1;
 }
-#childrenButton {
+.childrenButton.cell {
   grid-column: 2 / span 1;
   grid-row: 2 / span 1;
 }
-#infantsTextCell{
+.infants.cell{
   grid-column: 1 / span 1;
   grid-row: 3 / span 1;
 }
-#infantButton {
+.infantsButton.cell {
   grid-column: 2 / span 1;
   grid-row: 3 / span 1;
 }
 #dropdownBottomText {
   grid-column: 1 / span 2;
   grid-row: 4 / span 1;
+  text-align: left;
+  font-size: 14px;
+  color: rgb(34, 34, 34);
+  line-height: 20px;
 }
 #closeButton {
   grid-column: 2 / span 2;
   grid-row: 5 / span 1;
 }
 .minusButton, .addButton {
-  border-radius: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: white;
+  color:rgb(113, 113, 113) ;
+  border: solid 1px rgb(176, 176, 176);
+  font-size: 22;
 }
 .disabledButton {
   cursor: not-allowed;
   opacity: 0.1;
+}
+.ages {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
 }
