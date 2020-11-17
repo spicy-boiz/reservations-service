@@ -4,10 +4,21 @@
   border: solid 1px rgb(221,221,221);
   background-color: white;
   border-radius: 0px 0px 10px 10px;
+  padding: 10px 12px 35px 10px;
   margin-bottom: 10px;
   min-height: 40px;
   display: flex;
   justify-content: space-between;
+}
+#GuestHeader {
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 12px;
+  text-transform: uppercase;
+}
+#GuestsString {
+  font-size: 14px;
+  line-height: 18px;
 }
 .icon {
   width: 25px;

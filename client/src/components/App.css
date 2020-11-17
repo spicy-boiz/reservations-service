@@ -27,4 +27,15 @@
 .reserveButton {
   grid-column: 1 / span 2;
   grid-row: 4 / span 1;
+  background-color: rgb(227, 28, 95);
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  color:white;
+  border-radius: 12px;
+  max-height: 75%;
+  border: 0px;
+  margin-top: 4%;
+  cursor: pointer;
 }
