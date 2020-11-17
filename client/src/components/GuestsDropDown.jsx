@@ -45,10 +45,12 @@ function GuestsDropDown({ dropdown, changeGuests }) {
         <text>{` ${infantsNum} `}</text>
         <button className={styles.addButton} type="button" onClick={() => incNum(setInfantsNum, infantsNum)}>+</button>
       </div>
-      <div id={styles.dropdownBottomText}>
+      <div className={`${styles.dropdownBottomText} ${styles.cell}`}>
         <text>{'6 guests maximum. Infants don\'t count toward the number of guests.'}</text>
       </div>
-      <button id={styles.closeButton} type="button" onClick={dropdown}>Close</button>
+      <div className={`${styles.close} ${styles.cell}`}>
+        <button id={styles.closeButton} type="button" onClick={dropdown}>Close</button>
+      </div>
     </div>
   );
 }

@@ -53,7 +53,7 @@
   grid-column: 2 / span 1;
   grid-row: 3 / span 1;
 }
-#dropdownBottomText {
+.dropdownBottomText {
   grid-column: 1 / span 2;
   grid-row: 4 / span 1;
   text-align: left;
@@ -61,15 +61,32 @@
   color: rgb(34, 34, 34);
   line-height: 20px;
 }
-#closeButton {
+.close {
   grid-column: 2 / span 2;
   grid-row: 5 / span 1;
+  justify-content: flex-end;
+}
+#closeButton {
+  background-color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 10px;
+  border: 0px;
+  width: auto;
+  text-decoration: underline;
+  font-weight: 600;
+  cursor: pointer;
+}
+#closeButton:hover {
+  background-color: rgb(235, 233, 233);;
 }
 .minusButton, .addButton {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   background-color: white;
+  cursor: pointer;
   color:rgb(113, 113, 113) ;
   border: solid 1px rgb(176, 176, 176);
   font-size: 22;
