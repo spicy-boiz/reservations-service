@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import styles from './CalendarDates.css';
 
 function CalendarDates({ dates, setCheckInDate, setCheckOutDate,
-  setCheckInDateSet, checkInDateSet}) {
+  setCheckInDateSet, checkInDateSet, setCheckingDatesSet}) {
   function setCheckDate(date) {
     if (!checkInDateSet) {
       setCheckInDate(date);
       setCheckInDateSet(true);
     } else {
       setCheckOutDate(date);
+      setCheckingDatesSet(true);
     }
   }
   const datesToHTML = dates.map((dateObj) => {

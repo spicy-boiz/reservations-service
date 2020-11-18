@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CalendarDates from './CalendarDates.jsx';
 import styles from './Calendar.css';
 
-function Calendar({ setCheckInDate, setCheckOutDate, checkInDateSet, setCheckInDateSet}) {
+function Calendar({ setCheckInDate, setCheckOutDate, checkInDateSet, setCheckInDateSet, setCheckingDatesSet}) {
   const [dateLeft, setDateLeft] = useState(new Date());
   const oneMonthUp = (new Date(dateLeft)).setMonth(dateLeft.getMonth() + 1);
   const [dateRight, setDateRight] = useState(new Date(oneMonthUp));
@@ -49,8 +49,8 @@ function Calendar({ setCheckInDate, setCheckOutDate, checkInDateSet, setCheckInD
         <button type="button" onClick={increaseMonth}>{'>'}</button>
       </div>
       <div id={styles.calendarDates}>
-        <CalendarDates currMonth={dateLeft.getMonth()} dates={createDatesArray(dateLeft)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet}/>
-        <CalendarDates currMonth={dateRight.getMonth()} dates={createDatesArray(dateRight)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet}/>
+        <CalendarDates currMonth={dateLeft.getMonth()} dates={createDatesArray(dateLeft)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} />
+        <CalendarDates currMonth={dateRight.getMonth()} dates={createDatesArray(dateRight)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} />
       </div>
     </div>
   );
