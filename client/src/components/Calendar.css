@@ -1,0 +1,8 @@
+#calendarContainer {
+  grid-column: 1 / span 2;
+  grid-row: 2 / span 1;
+}
+#calendarBar {
+  display: flex;
+  justify-content: space-around;
+}

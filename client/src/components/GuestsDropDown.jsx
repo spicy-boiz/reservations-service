@@ -32,7 +32,7 @@ function GuestsDropDown({ dropdown, changeGuests }) {
         <div className={styles.ages}>Ages 2-12</div>
       </div>
       <div className={`${styles.childrenButton} ${styles.cell}`}>
-        <button className={`${styles.minusButton} ${childrenNum < 2 ? styles.disabledButton : ''}`} disabled={!(childrenNum)} type="button" onClick={() => decNum(setChildrenNum, childrenNum)}>-</button>
+        <button className={`${styles.minusButton} ${childrenNum < 1 ? styles.disabledButton : ''}`} disabled={!(childrenNum)} type="button" onClick={() => decNum(setChildrenNum, childrenNum)}>-</button>
         <text>{` ${childrenNum} `}</text>
         <button className={styles.addButton} type="button" onClick={() => incNum(setChildrenNum, childrenNum)}>+</button>
       </div>
@@ -41,7 +41,7 @@ function GuestsDropDown({ dropdown, changeGuests }) {
         <div className={styles.ages}>Under 2</div>
       </div>
       <div className={`${styles.infantsButton} ${styles.cell}`}>
-        <button className={`${styles.minusButton} ${infantsNum < 2 ? styles.disabledButton : ''}`} disabled={!(infantsNum)} type="button" onClick={() => decNum(setInfantsNum, infantsNum)}>-</button>
+        <button className={`${styles.minusButton} ${infantsNum < 1 ? styles.disabledButton : ''}`} disabled={!(infantsNum)} type="button" onClick={() => decNum(setInfantsNum, infantsNum)}>-</button>
         <text>{` ${infantsNum} `}</text>
         <button className={styles.addButton} type="button" onClick={() => incNum(setInfantsNum, infantsNum)}>+</button>
       </div>

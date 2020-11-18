@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import downArrow from '../../dist/images/arrowicondown.png';
 import upArrow from '../../dist/images/arrowiconup.png';
 import styles from './Guests.css';
 
-function Guests({ dropdown, guestNum, dropBool }) {
+function Guests({ dropdown, guestNum, guestsBool }) {
   return (
     <button className={styles.guests} onClick={dropdown} type="button">
       <span>
@@ -12,7 +12,7 @@ function Guests({ dropdown, guestNum, dropBool }) {
         <div id={styles.guestsString}>{`${guestNum} ${guestNum > 1 ? 'guests' : 'guest'}`}</div>
       </span>
       <span>
-        <img className={styles.icon} src={dropBool === true ? upArrow : downArrow} alt="Up" />
+        <img className={styles.icon} src={guestsBool === true ? upArrow : downArrow} alt="Up" />
       </span>
     </button>
   );
@@ -20,6 +20,6 @@ function Guests({ dropdown, guestNum, dropBool }) {
 Guests.propTypes = {
   dropdown: PropTypes.func.isRequired,
   guestNum: PropTypes.number.isRequired,
-  dropBool: PropTypes.bool.isRequired,
+  guestsBool: PropTypes.bool.isRequired,
 };
 export default Guests;

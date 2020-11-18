@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import Guests from './Guests.jsx';
 import DateSelection from './DateSelection.jsx';
 import GuestsDropDown from './GuestsDropDown.jsx';
+import CheckingDropDown from './CheckingDropDown.jsx'
 import styles from './App.css';
 
 function App(props) {
-  const [dropBool, setDropBool] = useState(false);
+  const [guestsBool, setGuestsBool] = useState(false);
   const [guestsNum, setGuests] = useState(1);
+  const [checkingBool, setCheckingBool] = useState(true);
 
-  function dropDownToggle() {
-    setDropBool(!dropBool);
-    console.log(dropBool);
+  function dropDownGuestsToggle() {
+    setGuestsBool(!guestsBool);
   }
   function changeGuests(operation) {
     if (operation === 'decrease') {
@@ -20,6 +21,9 @@ function App(props) {
       setGuests(guestsNum + 1);
     }
   }
+  function dropDownCheckingToggle() {
+    setCheckingBool(!checkingBool);
+  }
   return (
     <div className={styles.mainContainer}>
       <span className={styles.mainPrice}>
@@ -28,10 +32,11 @@ function App(props) {
       <span className={styles.calendarReviews}>
         4.96
       </span>
-      <DateSelection />
-      <Guests dropdown={dropDownToggle} guestNum={guestsNum} dropBool={dropBool} />
-      {dropBool && (
-        <GuestsDropDown dropdown={dropDownToggle} changeGuests={changeGuests} />
+      <DateSelection onDropdown={false} />
+      {checkingBool && (<CheckingDropDown DateSelection={<DateSelection onDropdown />} />)}
+      <Guests dropdown={dropDownGuestsToggle} guestNum={guestsNum} guestsBool={guestsBool} />
+      {guestsBool && (
+        <GuestsDropDown dropdown={dropDownGuestsToggle} changeGuests={changeGuests} />
       )}
       <button className={styles.reserveButton} type="submit">Check availability</button>
     </div>
