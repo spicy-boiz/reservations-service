@@ -3,19 +3,28 @@ import PropTypes from 'prop-types';
 import styles from './DateSelection.css';
 
 function DateSelection({ onDropdown, checkingDates }) {
-  let checkInDefined = Boolean(checkingDates.checkInDate);
-  let checkOutDefined = Boolean(checkingDates.checkOutDate);
+  let checkInDefined = Boolean(checkingDates[0]);
+  let checkOutDefined = Boolean(checkingDates[1]);
   // console.log('Inside DateSelection: ', checkInDefined, checkOutDefined);
-  console.log('Inside DateSelection: ', checkingDates.checkInDate, checkingDates.checkOutDate);
+  const checkInDate = checkingDates[0];
+  const checkOutDate = checkingDates[1];
+  let checkInDateStr = '';
+  let checkOutDateStr = '';
+  if (checkInDefined) {
+    checkInDateStr = `${checkInDate.getMonth() + 1}/${checkInDate.getDate()}/${checkInDate.getFullYear()}`;
+  }
+  if (checkOutDefined) {
+    checkOutDateStr = `${checkOutDate.getMonth() + 1}/${checkOutDate.getDate()}/${checkOutDate.getFullYear()}`;
+  }
   return (
     <div className={`${styles.checkingContainer} ${onDropdown ? styles.dropdown : styles.notDropdown}`}>
       <span className={`${styles.checkIn} ${styles.box}`}>
         <div>Check-In</div>
-        <div>{checkInDefined ? checkingDates.checkInDate.toString() : 'Add date'}</div>
+        <div>{checkInDefined ? checkInDateStr : 'Add date'}</div>
       </span>
       <span className={`${styles.checkOut} ${styles.box}`}>
         <div>Check-Out</div>
-        <div>{checkOutDefined ? checkingDates.checkOutDate.toString() : 'Add date'}</div>
+        <div>{checkOutDefined ? checkOutDateStr : 'Add date'}</div>
       </span>
     </div>
   );

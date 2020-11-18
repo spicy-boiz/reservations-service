@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './CalendarDates.css';
 
-function CalendarDates({ dates, setCheckInDate, setCheckOutDate }) {
-  const [checkInDateSet, setCheckInDateSet] = useState(false);
+function CalendarDates({ dates, setCheckInDate, setCheckOutDate,
+  setCheckInDateSet, checkInDateSet}) {
   function setCheckDate(date) {
     if (!checkInDateSet) {
       setCheckInDate(date);

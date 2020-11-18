@@ -38,9 +38,9 @@ function App(props) {
       <span className={styles.calendarReviews}>
         4.96
       </span>
-      {/* <DateSelection onDropdown={false} checkingDates={[checkInDate, checkOutDate]} /> */}
+      <DateSelection onDropdown={false} checkingDates={[checkInDate, checkOutDate]} />
       {checkingBool
-      && (<CheckingDropDown checkingDates={[checkInDate, checkOutDate]} DateSelection={<DateSelection onDropdown checkingDates={[checkInDate, checkOutDate]} />} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate}/>)}
+      && (<CheckingDropDown DateSelection={<DateSelection onDropdown checkingDates={[checkInDate, checkOutDate]} />} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate}/>)}
       <Guests dropdown={dropDownGuestsToggle} guestNum={guestsNum} guestsBool={guestsBool} />
       {guestsBool && (
         <GuestsDropDown dropdown={dropDownGuestsToggle} changeGuests={changeGuests} />
