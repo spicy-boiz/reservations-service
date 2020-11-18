@@ -24,7 +24,6 @@ app.get('/api/listings/', (req, res) => {
     });
 });
 app.get('/api/listings/:id', (req, res) => {
-  console.log(req.params.id);
   Helpers.listingModel.find({ id: req.params.id })
     .then((listings) => {
       res.header('Content-Type', 'application/json');

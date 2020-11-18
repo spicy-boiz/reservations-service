@@ -53,8 +53,8 @@ function App(props) {
         4.96
       </span>
       <DateSelection onDropdown={false} checkingDates={[checkInDate, checkOutDate]} />
-      {checkingBool
-      && (<CheckingDropDown DateSelection={<DateSelection onDropdown checkingDates={[checkInDate, checkOutDate]} />} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} setCheckingDatesSet={setCheckingDatesSet}/>)}
+      {checkingBool && (
+        <CheckingDropDown DateSelection={<DateSelection onDropdown checkingDates={[checkInDate, checkOutDate]} />} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} setCheckingDatesSet={setCheckingDatesSet} checkingDatesSet={checkingDatesSet} checkingDates={[checkInDate, checkOutDate]}/>)}
       <Guests dropdown={dropDownGuestsToggle} guestNum={guestsNum} guestsBool={guestsBool} />
       {guestsBool && (
         <GuestsDropDown dropdown={dropDownGuestsToggle} changeGuests={changeGuests} />
