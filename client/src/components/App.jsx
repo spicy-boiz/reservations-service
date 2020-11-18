@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Guests from './Guests.jsx';
 import DateSelection from './DateSelection.jsx';
 import GuestsDropDown from './GuestsDropDown.jsx';
@@ -9,6 +9,8 @@ function App(props) {
   const [guestsBool, setGuestsBool] = useState(false);
   const [guestsNum, setGuests] = useState(1);
   const [checkingBool, setCheckingBool] = useState(true);
+  const [checkInDate, setCheckInDate] = useState(undefined);
+  const [checkOutDate, setCheckOutDate] = useState(undefined);
 
   function dropDownGuestsToggle() {
     setGuestsBool(!guestsBool);
@@ -24,6 +26,10 @@ function App(props) {
   function dropDownCheckingToggle() {
     setCheckingBool(!checkingBool);
   }
+  useEffect(() => {
+    console.log('UseEffect: ', checkInDate);
+    console.log('UseEffect: ', checkOutDate);
+  }, [checkInDate, checkOutDate]);
   return (
     <div className={styles.mainContainer}>
       <span className={styles.mainPrice}>
@@ -32,8 +38,9 @@ function App(props) {
       <span className={styles.calendarReviews}>
         4.96
       </span>
-      <DateSelection onDropdown={false} />
-      {checkingBool && (<CheckingDropDown DateSelection={<DateSelection onDropdown />} />)}
+      {/* <DateSelection onDropdown={false} checkingDates={[checkInDate, checkOutDate]} /> */}
+      {checkingBool
+      && (<CheckingDropDown checkingDates={[checkInDate, checkOutDate]} DateSelection={<DateSelection onDropdown checkingDates={[checkInDate, checkOutDate]} />} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate}/>)}
       <Guests dropdown={dropDownGuestsToggle} guestNum={guestsNum} guestsBool={guestsBool} />
       {guestsBool && (
         <GuestsDropDown dropdown={dropDownGuestsToggle} changeGuests={changeGuests} />
