@@ -1,25 +1,70 @@
+.checkingContainer {
+  width: 100%;
+  margin-bottom: -1px;
+}
 .checkingContainer.notDropdown {
   grid-column: 1 / span 2;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
 }
 .checkingContainer.dropdown {
   grid-column: 2 / span 1;
+}
+.checkIn.box {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+  border-right-width: 0px;
+}
+.checkOut.box {
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 1;
+}
+.box {
+  display: block;
+  border: solid 1px rgb(221,221,221);
+  padding-top: 10px;
+  padding-left: 12px;
+}
+.box > .checkLargeText {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.box > .checkSmallText {
+  font-size: 14px;
+  color: rgb(113, 113, 113);
+  line-height: 18px;
+}
+.insideCheckingContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
+  width: 100%;
+  height: 100%;
+  text-align: left;
 }
-.checkIn.box {
+.checkingContainer.notDropdown > .insideCheckingContainer > .checkIn.box {
   grid-column: 1 / span 1;
-  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+  border-radius: 6px 0px 0px 0px;
+
 }
-.checkIn.box {
+.checkingContainer.notDropdown > .insideCheckingContainer > .checkOut.box {
   grid-column: 2 / span 1;
-  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+  border-radius: 0px 6px 0px 0px;
 }
-.box {
-  display: flex;
-  border: 1px solid black;
-  display: block;
+.checkingContainer.dropdown > .insideCheckingContainer {
+  background-color: rgb(247, 247, 247);
+  height: 56px;
+}
+.checkingContainer.dropdown > .insideCheckingContainer > .checkIn.box {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+  border-radius: 6px 0px 0px 6px;
+  background-color: transparent;
+}
+.checkingContainer.dropdown > .insideCheckingContainer > .checkOut.box {
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 1;
+  border-radius: 0px 6px 6px 0px;
+  background-color: transparent;
 }

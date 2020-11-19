@@ -6,6 +6,7 @@ import GuestsDropDown from './GuestsDropDown.jsx';
 import CheckingDropDown from './CheckingDropDown.jsx'
 import Fees from './Fees.jsx';
 import styles from './App.css';
+import star from '../../dist/images/star.png';
 
 function App(props) {
   const [guestsBool, setGuestsBool] = useState(false);
@@ -47,21 +48,26 @@ function App(props) {
   return (
     <div className={styles.mainContainer}>
       <span className={styles.mainPrice}>
-        {`${listingData === undefined ? 'Data Loading....' : listingData[0].fees.pernight}/night`}
+        <span id={styles.mainPriceAmount}>
+          {`$${listingData === undefined ? '' : listingData[0].fees.pernight}`}
+        </span>
+        <span id={styles.mainPricePerNight}>/ night</span>
       </span>
       <span className={styles.calendarReviews}>
-        4.96
+        <img id={styles.iconStar} src={star} alt="star" />
+        <span id={styles.reviews}>{' 4.96'}</span>
+        <span id={styles.reviewsNum}> {' (290)'}</span>
       </span>
       <DateSelection onDropdown={false} checkingDates={[checkInDate, checkOutDate]} />
       {checkingBool && (
-        <CheckingDropDown DateSelection={<DateSelection onDropdown checkingDates={[checkInDate, checkOutDate]} />} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} setCheckingDatesSet={setCheckingDatesSet} checkingDatesSet={checkingDatesSet} checkingDates={[checkInDate, checkOutDate]}/>)}
+        <CheckingDropDown DateSelection={<DateSelection onDropdown checkingDates={[checkInDate, checkOutDate]} />} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} setCheckingDatesSet={setCheckingDatesSet} checkingDatesSet={checkingDatesSet} checkingDates={[checkInDate, checkOutDate]} />)}
       <Guests dropdown={dropDownGuestsToggle} guestNum={guestsNum} guestsBool={guestsBool} />
       {guestsBool && (
         <GuestsDropDown dropdown={dropDownGuestsToggle} changeGuests={changeGuests} />
       )}
       <button className={styles.reserveButton} type="submit">{Boolean(checkingDatesSet) ? 'Reserve' : 'Check Availability'}</button>
       {checkingDatesSet
-      && (<Fees listingData={listingData} checkInDate={checkInDate} checkOutDate={checkOutDate} />)}
+        && (<Fees listingData={listingData} checkInDate={checkInDate} checkOutDate={checkOutDate} />)}
     </div>
   );
 }

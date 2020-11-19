@@ -15,10 +15,37 @@
 .mainPrice {
   grid-column: 1 / span 1;
   grid-row: 1 / span 1;
+  text-align: left;
+}
+#mainPriceAmount {
+  font-size: 22px;
+  line-height: 26px;
+  font-weight: 600;
+}
+#mainPricePerNight {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: rgb(34, 34, 34);
+  padding-left: 4px;
 }
 .calendarReviews {
   grid-column: 2 / span 1;
   grid-row: 1 / span 1;
+  text-align: right;
+  padding-top: 10px;
+}
+#iconStar {
+  width: 12px;
+  height: 12px;
+}
+#reviews {
+  font-weight: 600;
+  font-size: 14px;
+}
+#reviewsNum {
+  font-size: 14px;
+  color: rgb(113, 113, 113);
 }
 .date-selection {
   grid-column: 1 / span 2;

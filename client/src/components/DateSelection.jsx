@@ -18,14 +18,16 @@ function DateSelection({ onDropdown, checkingDates }) {
   }
   return (
     <div className={`${styles.checkingContainer} ${onDropdown ? styles.dropdown : styles.notDropdown}`}>
-      <span className={`${styles.checkIn} ${styles.box}`}>
-        <div>Check-In</div>
-        <div>{checkInDefined ? checkInDateStr : 'Add date'}</div>
-      </span>
-      <span className={`${styles.checkOut} ${styles.box}`}>
-        <div>Check-Out</div>
-        <div>{checkOutDefined ? checkOutDateStr : 'Add date'}</div>
-      </span>
+      <div className={styles.insideCheckingContainer}>
+        <span className={`${styles.checkIn} ${styles.box}`}>
+          <div className={styles.checkLargeText}>Check-In</div>
+          <div className={styles.checkSmallText}>{checkInDefined ? checkInDateStr : 'Add date'}</div>
+        </span>
+        <span className={`${styles.checkOut} ${styles.box}`}>
+          <div className={styles.checkLargeText}>CheckOut</div>
+          <div className={styles.checkSmallText}>{checkOutDefined ? checkOutDateStr : 'Add date'}</div>
+        </span>
+      </div>
     </div>
   );
 }

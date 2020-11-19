@@ -25,11 +25,11 @@ function CheckingDropDown({ DateSelection, setCheckInDate, setCheckOutDate, setC
   return (
     <div className={styles.checkingDropdown}>
       <span id={styles.selectDates}>
-        <div>
-          {checkingDatesSet ? `${lengthOfStay} ${lengthOfStay > 1 ? 'nights' : 'night'}` : 'Select Dates'}
+        <div id={styles.headerTop}>
+          {checkingDatesSet ? `${lengthOfStay} ${lengthOfStay > 1 ? 'nights' : 'night'}` : 'Select dates'}
         </div>
-        <div>
-          {checkingDatesSet ? `${checkInDateStr} - ${checkOutDateStr}` : 'Add travel dates for exact pricing'}
+        <div id={styles.headerBottom}>
+          {checkingDatesSet ? `${checkInDateStr} - ${checkOutDateStr}` : 'Add your travel dates for exact pricing'}
         </div>
       </span>
       {DateSelection}
