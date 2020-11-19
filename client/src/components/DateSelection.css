@@ -40,6 +40,7 @@
   width: 100%;
   height: 100%;
   text-align: left;
+  border-radius: 6px;
 }
 .checkingContainer.notDropdown > .insideCheckingContainer > .checkIn.box {
   grid-column: 1 / span 1;

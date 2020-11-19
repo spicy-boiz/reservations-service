@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './CalendarDates.css';
 
 function CalendarDates({ dates, setCheckInDate, setCheckOutDate,
-  setCheckInDateSet, checkInDateSet, setCheckingDatesSet}) {
+  setCheckInDateSet, checkInDateSet, setCheckingDatesSet, side }) {
   function setCheckDate(date) {
     if (!checkInDateSet) {
       setCheckInDate(date);
@@ -16,15 +16,16 @@ function CalendarDates({ dates, setCheckInDate, setCheckOutDate,
   const datesToHTML = dates.map((dateObj) => {
     if (dateObj !== '') {
       return (
-      <td  onClick={()=>setCheckDate(dateObj)}>{dateObj.getDate()}</td>
+        <td onClick={() => setCheckDate(dateObj)} className={styles.days}>{dateObj.getDate()}</td>
       );
     }
     return <td />;
   });
+  console.log(side);
   return (
-    <span>
-      <table>
-        <tr>
+    <span className={`${styles.calendarDaysSpan} ${styles[side]}`}>
+      <table className={`${styles.calendarDaysTable} ${styles[side]}`}>
+        <tr className={styles.dayNames}>
           <th>Su</th>
           <th>Mo</th>
           <th>Tu</th>
@@ -48,6 +49,12 @@ function CalendarDates({ dates, setCheckInDate, setCheckOutDate,
         <tr>
           {datesToHTML.slice(28, 35)}
         </tr>
+        {(datesToHTML[35] !== undefined)
+          && (
+            <tr>
+              {datesToHTML.slice(35, 41)}
+            </tr>
+          )}
       </table>
     </span>
   );

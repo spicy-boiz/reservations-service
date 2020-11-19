@@ -21,7 +21,7 @@ function Calendar({ setCheckInDate, setCheckOutDate, checkInDateSet, setCheckInD
   }
   function createDatesArray(dateObj) {
     //create new array with 35 elements
-    const dates = new Array(35);
+    const dates = new Array(41);
     //set the date obj to the first day of the month
     const firstDayObj = new Date(dateObj.getFullYear(), dateObj.getMonth(), 1);
     //get the day of the week of the first day of the month
@@ -44,14 +44,12 @@ function Calendar({ setCheckInDate, setCheckOutDate, checkInDateSet, setCheckInD
     <div id={styles.calendarContainer}>
       <div id={styles.calendarBar}>
         <button type="button" onClick={decreaseMonth}>{'<'}</button>
-        <span>{`${dateLeft.toLocaleString('default', { month: 'long', year: 'numeric' })}`}</span>
+        <span id={styles.leftSpan}>{`${dateLeft.toLocaleString('default', { month: 'long', year: 'numeric' })}`}</span>
         <span>{`${dateRight.toLocaleString('default', { month: 'long', year: 'numeric' })}`}</span>
         <button type="button" onClick={increaseMonth}>{'>'}</button>
       </div>
-      <div id={styles.calendarDates}>
-        <CalendarDates currMonth={dateLeft.getMonth()} dates={createDatesArray(dateLeft)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} />
-        <CalendarDates currMonth={dateRight.getMonth()} dates={createDatesArray(dateRight)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} />
-      </div>
+        <CalendarDates side="left" currMonth={dateLeft.getMonth()} dates={createDatesArray(dateLeft)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} />
+        <CalendarDates side="right" currMonth={dateRight.getMonth()} dates={createDatesArray(dateRight)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} />
     </div>
   );
 }

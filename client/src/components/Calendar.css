@@ -1,11 +1,24 @@
 #calendarContainer {
   grid-column: 1 / span 2;
   grid-row: 2 / span 1;
+  display: grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows: 1fr minmax(200px, 4fr);
+  width: 100%;
 }
 #calendarBar {
+  grid-column: 1 / end;
+  grid-row: 1 / span 1;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  height: 25px;
+  padding-top: 26px;
 }
-#calendarDates {
-  display: flex;
+#calendarBar > span {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+}
+#leftSpan {
+  padding-right: 170px;
 }
