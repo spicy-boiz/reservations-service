@@ -36,8 +36,9 @@
   padding-top: 10px;
 }
 #iconStar {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
+  fill: rgb(255,56, 92);
 }
 #reviews {
   font-weight: 600;

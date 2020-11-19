@@ -48,7 +48,7 @@ function CheckingDropDown({ DateSelection, setCheckInDate, setCheckOutDate, setC
 }
 
 CheckingDropDown.propTypes = {
-  DateSelection: PropTypes.elementType.isRequired,
+  // DateSelection: PropTypes.elementType.isRequired,
   setCheckInDate: PropTypes.func.isRequired,
   setCheckOutDate: PropTypes.func.isRequired,
 };
