@@ -63,7 +63,7 @@ function Calendar({ setCheckInDate, setCheckOutDate, checkInDateSet, setCheckInD
   );
 }
 CalendarDates.propTypes = {
-  setCheckInDate: PropTypes.func.isRequired,
-  setCheckOutDate: PropTypes.func.isRequired,
+  // setCheckInDate: PropTypes.func.isRequired,
+  // setCheckOutDate: PropTypes.func.isRequired,
 };
 export default Calendar;

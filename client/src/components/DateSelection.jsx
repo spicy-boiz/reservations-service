@@ -33,7 +33,7 @@ function DateSelection({ onDropdown, checkingDates, dropDownCheckingToggle }) {
 }
 
 DateSelection.propTypes = {
-  onDropdown: PropTypes.bool.isRequired,
-  checkingDates: PropTypes.arrayOf(PropTypes.instanceOf(Date)).isRequired,
+  // onDropdown: PropTypes.bool.isRequired,
+  // checkingDates: PropTypes.arrayOf(PropTypes.instanceOf(Date)).isRequired,
 };
 export default DateSelection;

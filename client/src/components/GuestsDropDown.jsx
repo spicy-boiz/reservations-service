@@ -55,7 +55,7 @@ function GuestsDropDown({ dropdown, changeGuests }) {
   );
 }
 GuestsDropDown.propTypes = {
-  dropdown: PropTypes.func.isRequired,
-  changeGuests: PropTypes.func.isRequired,
+  // dropdown: PropTypes.func.isRequired,
+  // changeGuests: PropTypes.func.isRequired,
 };
 export default GuestsDropDown;
