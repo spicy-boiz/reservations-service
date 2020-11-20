@@ -1,0 +1,29 @@
+.guests {
+  height:100%;
+  grid-column: 1 / span 2;
+  grid-row: 3 /span 1;
+  border: solid 1px rgb(176,176,176);
+  background-color: white;
+  border-radius: 0px 0px 10px 10px;
+  padding: 0px 12px 0px 12px;
+  margin-bottom: 10px;
+  min-height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#GuestHeader {
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 12px;
+  text-transform: uppercase;
+}
+#GuestsString {
+  font-size: 14px;
+  line-height: 18px;
+}
+.icon {
+  height: 16px;
+  width: 16px;
+  fill: currentcolor;
+}

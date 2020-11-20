@@ -1,0 +1,90 @@
+.checkingDropdown {
+  display: grid;
+  position: absolute;
+  margin: 25px 0px 0px -300px;
+  grid-template-columns: 1fr 1fr;
+  /* grid-template-rows: 80px minmax(290px, 320px) 35px; */
+  grid-template-rows: 80px minmax(min-content, max-content) 35px;
+  min-width: 597px;
+  /* min-height: 425px; */
+  /* height: 420px; */
+  background: rgb(255, 255, 255);
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+  padding: 24px 32px 16px 32px;
+  background: white;
+}
+#selectDates {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+  display: block;
+  text-align: left;
+}
+#keyboardIconCell {
+  grid-column: 1 / span 1;
+  grid-row: 3 / span 1;
+}
+#bottomButtons {
+  grid-column: 2 / span 1;
+  grid-row: 3 / span 1;
+}
+#headerTop {
+  font-weight: 600;
+  font-size: 22px;
+  color: rgb(34, 34, 34)
+}
+#headerBottom {
+  color: rgb(113, 113, 113);
+  font-size: 14px;
+}
+#keyboardIconCell {
+  text-align: left;
+}
+#keyboardIconContainer {
+  width:fit-content;
+  padding: 10px;
+  border-radius: 100%;
+}
+#keyboardIconContainer:hover {
+  background-color: rgb(246 246 246);
+  cursor: pointer;
+}
+#bottomButtons {
+  text-align: right;
+}
+#clearDatesButton {
+  background-color: white;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 10px 5px;
+  margin-right: 10px;
+  border: 0px;
+  width: auto;
+  text-decoration: underline;
+  font-weight: 600;
+  cursor: pointer;
+}
+#clearDatesButton:hover {
+  background-color: rgb(246 246 246);
+}
+#closeButton {
+  background-color: rgb(34,34,34);
+  color: rgb(255,255,255);
+  cursor: pointer;
+  text-align: center;
+  line-height: 18px;
+  font-weight: 600;
+  border-radius: 8px;
+  font-size: 14px;
+  border: 0px;
+  padding: 8px 16px;
+  transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+}
+#closeButton:hover {
+  background: rgb(0,0,0);
+  border: 0px
+}
+#closeButton:focus, #clearDatesButton:focus {
+  outline: none;
+}

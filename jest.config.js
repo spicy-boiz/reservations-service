@@ -1,4 +1,6 @@
 module.exports = {
-  testEnvironment: 'node',
-  preset: '@shelf/jest-mongodb',
+  projects: [
+    './tests/backend/jestBackend.config.js',
+    './tests/frontend/jestFrontend.config.js',
+  ],
 };
