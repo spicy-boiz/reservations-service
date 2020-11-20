@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './DateSelection.css';
 
-function DateSelection({ onDropdown, checkingDates }) {
+function DateSelection({ onDropdown, checkingDates, dropDownCheckingToggle }) {
   let checkInDefined = Boolean(checkingDates[0]);
   let checkOutDefined = Boolean(checkingDates[1]);
   // console.log('Inside DateSelection: ', checkInDefined, checkOutDefined);
@@ -17,7 +17,7 @@ function DateSelection({ onDropdown, checkingDates }) {
     checkOutDateStr = `${checkOutDate.getMonth() + 1}/${checkOutDate.getDate()}/${checkOutDate.getFullYear()}`;
   }
   return (
-    <div className={`${styles.checkingContainer} ${onDropdown ? styles.dropdown : styles.notDropdown}`}>
+    <div className={`${styles.checkingContainer} ${onDropdown ? styles.dropdown : styles.notDropdown}`} onClick={!onDropdown ? dropDownCheckingToggle : ()=>(console.log('notthis'))}>
       <div className={styles.insideCheckingContainer}>
         <span className={`${styles.checkIn} ${styles.box}`}>
           <div className={styles.checkLargeText}>Check-In</div>

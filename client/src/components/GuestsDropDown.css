@@ -7,9 +7,9 @@
   border-radius: 5px;
   box-shadow: 0px 0.5px rgb(221, 221, 221);
   position: absolute;
-  max-width: inherit;
+  width: 295px;
   min-height: 285px;
-  margin: 47.5% 24px 0% 24px;
+  margin: 165px 24px 0% 0px;
   padding: 16px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);

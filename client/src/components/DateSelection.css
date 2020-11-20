@@ -7,6 +7,7 @@
 }
 .checkingContainer.dropdown {
   grid-column: 2 / span 1;
+  width: 330px;
 }
 .checkIn.box {
   grid-column: 1 / span 1;
@@ -19,7 +20,7 @@
 }
 .box {
   display: block;
-  border: solid 1px rgb(221,221,221);
+  border: solid 1px rgb(176,176,176);
   padding-top: 10px;
   padding-left: 12px;
 }
@@ -55,7 +56,7 @@
 }
 .checkingContainer.dropdown > .insideCheckingContainer {
   background-color: rgb(247, 247, 247);
-  height: 56px;
+  height: 59px;
 }
 .checkingContainer.dropdown > .insideCheckingContainer > .checkIn.box {
   grid-column: 1 / span 1;

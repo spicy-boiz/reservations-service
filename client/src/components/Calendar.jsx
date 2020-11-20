@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import CalendarDates from './CalendarDates.jsx';
 import styles from './Calendar.css';
 
-function Calendar({ setCheckInDate, setCheckOutDate, checkInDateSet, setCheckInDateSet, setCheckingDatesSet}) {
+function Calendar({ setCheckInDate, setCheckOutDate, checkInDateSet, setCheckInDateSet, setCheckingDatesSet }) {
   const [dateLeft, setDateLeft] = useState(new Date());
   const oneMonthUp = (new Date(dateLeft)).setMonth(dateLeft.getMonth() + 1);
   const [dateRight, setDateRight] = useState(new Date(oneMonthUp));
+
   function decreaseMonth() {
     const today = new Date();
     console.log("current: ", today.getYear(), "actual: ", dateLeft.getYear());
@@ -43,13 +44,21 @@ function Calendar({ setCheckInDate, setCheckOutDate, checkInDateSet, setCheckInD
   return (
     <div id={styles.calendarContainer}>
       <div id={styles.calendarBar}>
-        <button type="button" onClick={decreaseMonth}>{'<'}</button>
+        <button type="button" onClick={decreaseMonth}>
+          <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false">
+            <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fill-rule="evenodd" />
+          </svg>
+        </button>
         <span id={styles.leftSpan}>{`${dateLeft.toLocaleString('default', { month: 'long', year: 'numeric' })}`}</span>
         <span>{`${dateRight.toLocaleString('default', { month: 'long', year: 'numeric' })}`}</span>
-        <button type="button" onClick={increaseMonth}>{'>'}</button>
+        <button type="button" onClick={increaseMonth}>
+          <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false">
+            <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z"/>
+          </svg>
+        </button>
       </div>
-        <CalendarDates side="left" currMonth={dateLeft.getMonth()} dates={createDatesArray(dateLeft)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} />
-        <CalendarDates side="right" currMonth={dateRight.getMonth()} dates={createDatesArray(dateRight)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} />
+      <CalendarDates side="left" currMonth={dateLeft.getMonth()} dates={createDatesArray(dateLeft)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} />
+      <CalendarDates side="right" currMonth={dateRight.getMonth()} dates={createDatesArray(dateRight)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} />
     </div>
   );
 }

@@ -3,22 +3,56 @@
   grid-row: 2 / span 1;
   display: grid;
   grid-template-columns:1fr 1fr;
-  grid-template-rows: 1fr minmax(200px, 4fr);
+  grid-template-rows: 30px minmax(min-content, max-content);
   width: 100%;
+  height:100%;
 }
 #calendarBar {
   grid-column: 1 / end;
   grid-row: 1 / span 1;
   display: flex;
   justify-content: space-between;
+  align-items:center;
   height: 25px;
-  padding-top: 26px;
+  padding-top: 12px;
 }
 #calendarBar > span {
   font-weight: 600;
   font-size: 16px;
   line-height: 20px;
 }
+#calendarBar > button {
+  background-color: white;
+  border-radius: 100%;
+  cursor: pointer;
+  border: 0px;
+  padding: 10px;
+}
+#calendarBar > button:focus {
+  outline: none;
+}
+#calendarBar > button:hover {
+  background-color: rgb(246 246 246);
+}
+#calendarBar > button > svg {
+  height: 12px;
+  width: 12px;
+}
+/* #clearDatesButton {
+  background-color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 10px;
+  border: 0px;
+  width: auto;
+  text-decoration: underline;
+  font-weight: 600;
+  cursor: pointer;
+}
+#clearDatesButton:hover {
+  background-color: rgb(246 246 246);
+} */
 #leftSpan {
   padding-right: 170px;
 }

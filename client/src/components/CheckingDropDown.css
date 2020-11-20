@@ -1,15 +1,18 @@
 .checkingDropdown {
   display: grid;
   position: absolute;
-  margin: 400px -100px;
+  margin: 25px 0px 0px -300px;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr minmax(250px, 4.5fr) 0.5fr;
+  /* grid-template-rows: 80px minmax(290px, 320px) 35px; */
+  grid-template-rows: 80px minmax(min-content, max-content) 35px;
   min-width: 597px;
-  min-height: 460px;
-  border-radius: 5px;
-  box-shadow: 0px 0.5px rgb(221, 221, 221);
+  /* min-height: 425px; */
+  /* height: 420px; */
+  background: rgb(255, 255, 255);
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
   padding: 24px 32px 16px 32px;
-  border: 1px solid black;
+  background: white;
 }
 #selectDates {
   grid-column: 1 / span 1;
@@ -37,15 +40,25 @@
 #keyboardIconCell {
   text-align: left;
 }
+#keyboardIconContainer {
+  width:fit-content;
+  padding: 10px;
+  border-radius: 100%;
+}
+#keyboardIconContainer:hover {
+  background-color: rgb(246 246 246);
+  cursor: pointer;
+}
 #bottomButtons {
   text-align: right;
 }
 #clearDatesButton {
   background-color: white;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 20px;
-  padding: 10px;
+  padding: 10px 5px;
+  margin-right: 10px;
   border: 0px;
   width: auto;
   text-decoration: underline;
@@ -53,7 +66,7 @@
   cursor: pointer;
 }
 #clearDatesButton:hover {
-  background-color: rgb(235, 233, 233);
+  background-color: rgb(246 246 246);
 }
 #closeButton {
   background-color: rgb(34,34,34);
