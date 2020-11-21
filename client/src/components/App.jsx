@@ -18,9 +18,10 @@ function App(props) {
 
   function getListingData() {
     const listingID = window.location.pathname.split('/')[1];
-    console.log(isNaN(listingID) ? listingID : 0);
-    // return axios.get(`localhost:3004/api/listings/${isNaN(listingID) ? 0 : listingID}`)
-    return axios.get(`/api/listings/5`)
+    // console.log(window.location.pathname.split('/')[1]);
+    // console.log(isNaN(listingID) ? 0 : listingID);
+    return axios.get(`/api/listings/${isNaN(listingID) ? 0 : listingID}`)
+    // return axios.get(`/api/listings/5`)
       .then((response) => {
         setListingData(response.data);
       })
