@@ -17,8 +17,10 @@ function App(props) {
   const [checkingDatesSet, setCheckingDatesSet] = useState(false);
 
   function getListingData() {
-    const listingID = window.location.pathname.split('/')[2];
-    return axios.get(`/api/listings/${listingID}`)
+    const listingID = window.location.pathname.split('/')[1];
+    console.log(isNaN(listingID) ? listingID : 0);
+    // return axios.get(`localhost:3004/api/listings/${isNaN(listingID) ? 0 : listingID}`)
+    return axios.get(`/api/listings/5`)
       .then((response) => {
         setListingData(response.data);
       })
@@ -67,9 +69,9 @@ function App(props) {
           <span id={styles.reviews}>{' 4.96'}</span>
           <span id={styles.reviewsNum}> {' (290)'}</span>
         </span>
-        <DateSelection onDropdown={false} checkingDates={[checkInDate, checkOutDate]} dropDownCheckingToggle={dropDownCheckingToggle}/>
+        <DateSelection onDropdown={false} checkingDates={[checkInDate, checkOutDate]} dropDownCheckingToggle={dropDownCheckingToggle} />
         {checkingBool && (
-          <CheckingDropDown DateSelection={<DateSelection onDropdown checkingDates={[checkInDate, checkOutDate]} />} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} setCheckingDatesSet={setCheckingDatesSet} checkingDatesSet={checkingDatesSet} checkingDates={[checkInDate, checkOutDate]} dropDownCheckingToggle={dropDownCheckingToggle}/>)}
+          <CheckingDropDown DateSelection={<DateSelection onDropdown checkingDates={[checkInDate, checkOutDate]} />} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} setCheckingDatesSet={setCheckingDatesSet} checkingDatesSet={checkingDatesSet} checkingDates={[checkInDate, checkOutDate]} dropDownCheckingToggle={dropDownCheckingToggle} />)}
         <Guests dropdown={dropDownGuestsToggle} guestNum={guestsNum} guestsBool={guestsBool} />
         {guestsBool && (
           <GuestsDropDown dropdown={dropDownGuestsToggle} changeGuests={changeGuests} />
