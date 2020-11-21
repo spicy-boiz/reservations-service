@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './DateSelection.css';
 
-function DateSelection({ onDropdown, checkingDates, dropDownCheckingToggle }) {
+function DateSelection({ onDropdown, dateSelectionProps:{checkingDates, dropDownCheckingToggle} }) {
   let checkInDefined = Boolean(checkingDates[0]);
   let checkOutDefined = Boolean(checkingDates[1]);
   // console.log('Inside DateSelection: ', checkInDefined, checkOutDefined);

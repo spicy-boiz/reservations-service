@@ -5,7 +5,7 @@
   background-color: white;
   border: solid 1px rgb(221,221,221);
   border-radius: 5px;
-  box-shadow: 0px 0.5px rgb(221, 221, 221);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
   position: absolute;
   width: 295px;
   min-height: 285px;
@@ -81,6 +81,9 @@
 #closeButton:hover {
   background-color: rgb(235, 233, 233);;
 }
+#closeButton:focus {
+  outline: none;
+}
 .minusButton, .addButton {
   width: 32px;
   height: 32px;
@@ -91,7 +94,14 @@
   border: solid 1px rgb(176, 176, 176);
   font-size: 22;
 }
-.disabledButton {
+.minusButton:focus, .addButton:focus {
+  outline: none;
+}
+.minusButton:hover, .addButton:hover {
+  border:black 1px solid;
+}
+.disabledButton, .disabledButton:hover {
+  border: rgb(113, 113, 113) ;
   cursor: not-allowed;
   opacity: 0.1;
 }

@@ -2,11 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './GuestsDropDown.css';
 
-function GuestsDropDown({ dropdown, changeGuests }) {
-  const [adultsNum, setAdultsNum] = useState(1);
-  const [childrenNum, setChildrenNum] = useState(0);
-  const [infantsNum, setInfantsNum] = useState(0);
-
+function GuestsDropDown({ dropdown, changeGuests, adultsNum, setAdultsNum, childrenNum, setChildrenNum, infantsNum, setInfantsNum}) {
   function incNum(func, num) {
     func(num + 1);
     if (func !== setInfantsNum) {

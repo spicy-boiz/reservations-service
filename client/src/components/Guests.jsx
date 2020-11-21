@@ -2,12 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Guests.css';
 
-function Guests({ dropdown, guestNum, guestsBool }) {
+function Guests({ dropdown, guestNum, infantsNum, guestsBool }) {
+  const combinedGuests = `${guestNum} ${guestNum > 1 ? 'guests' : 'guest'}`;
+  const infants = `${infantsNum > 0 ? infantsNum > 1 ? `, ${infantsNum} infants` : `, ${infantsNum} infant` : ''}`
+  const combinedStr = `${combinedGuests}${infants}`;
   return (
     <button className={styles.guests} onClick={dropdown} type="button">
       <span>
         <div id={styles.GuestHeader}>Guests</div>
-        <div id={styles.guestsString}>{`${guestNum} ${guestNum > 1 ? 'guests' : 'guest'}`}</div>
+        <div id={styles.guestsString}>{combinedStr}</div>
       </span>
       <span>
         {guestsBool ?
