@@ -23,6 +23,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest-css-modules-transform": "^4.0.2",
     "mongoose": "^5.10.14",
+    "morgan": "^1.10.0",
     "path": "^0.12.7",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
