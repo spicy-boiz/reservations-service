@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CalendarDates from './CalendarDates.jsx';
 import styles from './Calendar.css';
 
-function Calendar({ setCheckInDate, setCheckOutDate, checkInDateSet, setCheckInDateSet, setCheckingDatesSet, checkInDate, checkOutDate }) {
+function Calendar({props: { setCheckInDate, setCheckOutDate, checkInDateSet, setCheckInDateSet, setCheckingDatesSet, checkInDate, checkOutDate }}) {
   const [dateLeft, setDateLeft] = useState(new Date());
   const oneMonthUp = (new Date(dateLeft)).setMonth(dateLeft.getMonth() + 1);
   const [dateRight, setDateRight] = useState(new Date(oneMonthUp));

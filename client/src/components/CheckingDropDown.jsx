@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './CheckingDropDown.css';
 import Calendar from './Calendar.jsx';
 
-function CheckingDropDown({ DateSelection, setCheckInDate, setCheckOutDate, setCheckingDatesSet, checkingDatesSet, checkingDates, dropDownCheckingToggle }) {
+function CheckingDropDown({props: { DateSelection, setCheckInDate, setCheckOutDate, setCheckingDatesSet, checkingDatesSet, checkingDates, dropDownCheckingToggle } }) {
   const [checkInDateSet, setCheckInDateSet] = useState(false);
   let lengthOfStay;
   let checkInDateStr;
@@ -25,9 +25,10 @@ function CheckingDropDown({ DateSelection, setCheckInDate, setCheckOutDate, setC
     setCheckInDate,
     setCheckOutDate,
     checkInDateSet,
+    setCheckInDateSet,
     setCheckingDatesSet,
     checkInDate: checkingDates[0],
-    checkOutDate: checkingDates[0],
+    checkOutDate: checkingDates[1],
   };
   return (
     <div className={styles.checkingDropdown}>

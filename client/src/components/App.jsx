@@ -59,13 +59,14 @@ function App() {
     dropDownCheckingToggle,
   };
   const checkingDropDownProps = {
+    DateSelection: <DateSelection onDropdown dateSelectionProps={dateSelectionProps} />,
     setCheckInDate,
     setCheckOutDate,
     setCheckingDatesSet,
     checkingDatesSet,
     checkingDates: [checkInDate, checkOutDate],
     dropDownCheckingToggle,
-  }
+  };
   return (
     <div className={styles.mainContainer}>
       <div className={styles.mainGrid}>
@@ -84,7 +85,7 @@ function App() {
         </span>
         <DateSelection onDropdown={false} dateSelectionProps={dateSelectionProps} />
         {checkingBool && (
-          <CheckingDropDown DateSelection={<DateSelection onDropdown dateSelectionProps={dateSelectionProps} />} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} setCheckingDatesSet={setCheckingDatesSet} checkingDatesSet={checkingDatesSet} checkingDates={[checkInDate, checkOutDate]} dropDownCheckingToggle={dropDownCheckingToggle} />)}
+          <CheckingDropDown props={checkingDropDownProps} />)}
         <Guests dropdown={dropDownGuestsToggle} guestNum={guestsNum} infantsNum={infantsNum} guestsBool={guestsBool} />
         {guestsBool && (
           <GuestsDropDown dropdown={dropDownGuestsToggle} changeGuests={changeGuests} adultsNum={adultsNum} setAdultsNum={setAdultsNum} childrenNum={childrenNum} setChildrenNum={setChildrenNum} infantsNum={infantsNum} setInfantsNum={setInfantsNum} />

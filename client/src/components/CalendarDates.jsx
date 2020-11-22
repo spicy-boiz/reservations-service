@@ -48,7 +48,7 @@ function CalendarDates({ dates, setCheckInDate, setCheckOutDate,
       // Disable dates before check-in date, dates > 4 days after check-in date, or dates > check-out
       const fourDaysMS = 4 * 24 * 3600 * 1000;
       const datePlusFour = Boolean(checkInDate) ? new Date(checkInDate.getTime() + fourDaysMS) : undefined;
-      const afterCheckOut = dateObj.getTime() > checkOutSecs
+      const afterCheckOut = dateObj.getTime() > checkOutSecs;
       if (dateObj < checkInDate || (dateObj.getTime() > datePlusFour) || afterCheckOut) {
         return (
           <td className={styles.days} >
@@ -70,7 +70,6 @@ function CalendarDates({ dates, setCheckInDate, setCheckOutDate,
       }
       // Highlight all the dates between the focused date and the checkin date
       if (dateObj > checkInDate && dateObj < focusedDate) {
-        console.log('highlight dates');
         return (
           <td className={`${styles.days} ${styles.highlight}`} onClick={() => setCheckDate(dateObj)} onMouseOver={() => setHighlightDates(dateObj)} onMouseLeave={() => setFocusedDate(undefined)}>
             <div className={styles.innerCell}>
