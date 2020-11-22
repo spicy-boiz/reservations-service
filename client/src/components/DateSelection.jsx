@@ -16,6 +16,9 @@ function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, dropDo
   if (checkOutDefined) {
     checkOutDateStr = `${checkOutDate.getMonth() + 1}/${checkOutDate.getDate()}/${checkOutDate.getFullYear()}`;
   }
+  function flipFocus() {
+    setFocusedCheckIn(!focusedCheckIn);
+  }
   if (onDropdown) {
     return (
       <div className={`${styles.checkingContainer} ${styles.dropdown}`} >
@@ -23,7 +26,7 @@ function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, dropDo
           <span className={`${styles.checkIn} ${styles.box}`}>
             <div className={styles.checkLargeText}>Check-In</div>
             {/* <div className={styles.checkSmallText}>{checkInDefined ? checkInDateStr : 'Add date'}</div> */}
-            <input id="checkIn-input" placeholder={focusedCheckIn ? "MM/DD/YYYY" : "Add date"} type="text" onFocus={()=>setFocusedCheckIn(!focusedCheckIn)}></input>
+            <input id="checkIn-input" placeholder={focusedCheckIn ? "MM/DD/YYYY" : "Add date"} type="text" onFocus={flipFocus} onBlur={flipFocus}></input>
           </span>
           <span className={`${styles.checkOut} ${styles.box}`}>
             <div className={styles.checkLargeText}>CheckOut</div>
