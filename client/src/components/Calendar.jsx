@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 import CalendarDates from './CalendarDates.jsx';
 import styles from './Calendar.css';
 
-function Calendar({ setCheckInDate, setCheckOutDate, checkInDateSet, setCheckInDateSet, setCheckingDatesSet }) {
+function Calendar({ setCheckInDate, setCheckOutDate, checkInDateSet, setCheckInDateSet, setCheckingDatesSet, checkInDate, checkOutDate }) {
   const [dateLeft, setDateLeft] = useState(new Date());
   const oneMonthUp = (new Date(dateLeft)).setMonth(dateLeft.getMonth() + 1);
   const [dateRight, setDateRight] = useState(new Date(oneMonthUp));
 
   function decreaseMonth() {
     const today = new Date();
-    console.log("current: ", today.getYear(), "actual: ", dateLeft.getYear());
     if (dateLeft.getMonth() > today.getMonth() || dateLeft.getYear() > today.getYear()) {
       setDateLeft(new Date(dateLeft.setMonth(dateLeft.getMonth() - 1)));
       setDateRight(new Date(dateRight.setMonth(dateRight.getMonth() - 1)));
@@ -57,8 +56,8 @@ function Calendar({ setCheckInDate, setCheckOutDate, checkInDateSet, setCheckInD
           </svg>
         </button>
       </div>
-      <CalendarDates side="left" currMonth={dateLeft.getMonth()} dates={createDatesArray(dateLeft)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} />
-      <CalendarDates side="right" currMonth={dateRight.getMonth()} dates={createDatesArray(dateRight)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} />
+      <CalendarDates side="left" currMonth={dateLeft.getMonth()} dates={createDatesArray(dateLeft)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} checkInDate={checkInDate} checkOutDate={checkOutDate} />
+      <CalendarDates side="right" currMonth={dateRight.getMonth()} dates={createDatesArray(dateRight)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} checkInDate={checkInDate} checkOutDate={checkOutDate} />
     </div>
   );
 }

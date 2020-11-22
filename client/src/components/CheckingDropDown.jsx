@@ -8,7 +8,6 @@ function CheckingDropDown({ DateSelection, setCheckInDate, setCheckOutDate, setC
   let lengthOfStay;
   let checkInDateStr;
   let checkOutDateStr;
-  console.log(checkingDatesSet);
   if (checkingDatesSet) {
     lengthOfStay = (new Date(checkingDates[1] - checkingDates[0])).getDate();
     checkInDateStr = `${checkingDates[0].toLocaleString('default', { month: 'short' })}
@@ -33,7 +32,7 @@ function CheckingDropDown({ DateSelection, setCheckInDate, setCheckOutDate, setC
         </div>
       </span>
       {DateSelection}
-      <Calendar setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} setCheckInDateSet={setCheckInDateSet} checkInDateSet={checkInDateSet} setCheckingDatesSet={setCheckingDatesSet} />
+      <Calendar setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} setCheckInDateSet={setCheckInDateSet} checkInDateSet={checkInDateSet} setCheckingDatesSet={setCheckingDatesSet} checkInDate={checkingDates[0]} checkOutDate={checkingDates[1]}/>
       <div id={styles.keyboardIconCell}>
         <div id={styles.keyboardIconContainer}>
           <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" height="24px" width="24px">

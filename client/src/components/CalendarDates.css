@@ -32,11 +32,57 @@
 .days {
   font-size: 14px;
   font-weight: 600;
-  height: 40px;
-  width: 40px;
+  height: 40px !important;
+  width: 40px !important;
+  overflow: visible;
 }
-.days:hover {
+/* .days:hover {
   border-radius: 100%;
   border: 1.5px solid black;
   cursor: pointer;
+} */
+.innerCell.filled {
+  background:black;
+  color: white;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.days.blocked {
+  text-decoration: line-through;
+  color: rgb(176, 176, 176);
+  cursor: default;
+  font-weight: 400;
+}
+.days.blocked:hover {
+  border: none;
+  border-radius: none;
+}
+/* .highlight {
+  /* background: rgb(247,247,247);
+  background: red;
+  height: 40px;
+  width: 50px;
+  overflow-y: visible;
+} */
+.days.highlight {
+  background: red;
+}
+.innerCell {
+  border-radius: 100%;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  height: 95%;
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.innerCell:hover {
+  border: 1.5px solid black;
+}
+.days.highlight.checkIn {
+  border-radius: 65% 0px 0px 65%;
+}
+.days.highlight.checkOut, .days.highlight.focused {
+  border-radius: 0px 65% 65% 0px;
 }

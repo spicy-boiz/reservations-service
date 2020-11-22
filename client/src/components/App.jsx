@@ -76,8 +76,8 @@ function App(props) {
         </span>
         <DateSelection onDropdown={false} dateSelectionProps={dateSelectionProps} />
         {checkingBool && (
-          <CheckingDropDown DateSelection={<DateSelection onDropdown dateSelectionProps={dateSelectionProps}/>} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} setCheckingDatesSet={setCheckingDatesSet} checkingDatesSet={checkingDatesSet} checkingDates={[checkInDate, checkOutDate]} dropDownCheckingToggle={dropDownCheckingToggle} />)}
-        <Guests dropdown={dropDownGuestsToggle} guestNum={guestsNum}  infantsNum={infantsNum} guestsBool={guestsBool} />
+          <CheckingDropDown DateSelection={<DateSelection onDropdown dateSelectionProps={dateSelectionProps} />} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} setCheckingDatesSet={setCheckingDatesSet} checkingDatesSet={checkingDatesSet} checkingDates={[checkInDate, checkOutDate]} dropDownCheckingToggle={dropDownCheckingToggle} />)}
+        <Guests dropdown={dropDownGuestsToggle} guestNum={guestsNum} infantsNum={infantsNum} guestsBool={guestsBool} />
         {guestsBool && (
           <GuestsDropDown dropdown={dropDownGuestsToggle} changeGuests={changeGuests} adultsNum={adultsNum} setAdultsNum={setAdultsNum} childrenNum={childrenNum} setChildrenNum={setChildrenNum} infantsNum={infantsNum} setInfantsNum={setInfantsNum} />
         )}
