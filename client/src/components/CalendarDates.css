@@ -36,36 +36,25 @@
   width: 40px !important;
   overflow: visible;
 }
-/* .days:hover {
-  border-radius: 100%;
-  border: 1.5px solid black;
-  cursor: pointer;
-} */
 .innerCell.filled {
   background:black;
   color: white;
   border-radius: 100%;
   cursor: pointer;
 }
-.days.blocked {
+.innerCell.blocked {
   text-decoration: line-through;
   color: rgb(176, 176, 176);
   cursor: default;
   font-weight: 400;
 }
-.days.blocked:hover {
-  border: none;
-  border-radius: none;
+.innerCell.blocked:hover {
+  border: 1.5px solid transparent;
+  border-radius: 100%;
 }
-/* .highlight {
-  /* background: rgb(247,247,247);
-  background: red;
-  height: 40px;
-  width: 50px;
-  overflow-y: visible;
-} */
+
 .days.highlight {
-  background: red;
+  background: rgb(247,247,247);
 }
 .innerCell {
   border-radius: 100%;
@@ -83,6 +72,9 @@
 .days.highlight.checkIn {
   border-radius: 65% 0px 0px 65%;
 }
-.days.highlight.checkOut, .days.highlight.focused {
+.days.highlight.checkOut, .days.highlight.endFocus {
   border-radius: 0px 65% 65% 0px;
+}
+.focused.checkIn {
+  border-radius: 65% !important;
 }
