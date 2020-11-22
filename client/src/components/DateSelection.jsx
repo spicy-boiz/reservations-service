@@ -1,21 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './DateSelection.css';
 
 function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, dropDownCheckingToggle } }) {
-  const [focusedCheckIn, setFocusedCheckIn] = useState(false);
   const checkInDefined = Boolean(checkingDates[0]);
   const checkOutDefined = Boolean(checkingDates[1]);
   const checkInDate = checkingDates[0];
   const checkOutDate = checkingDates[1];
+  const [focusedCheckIn, setFocusedCheckIn] = useState(false);
+  const [checkInInput, setCheckInInput] = useState('');
+  console.log(checkInDefined, checkInInput)
   let checkInDateStr = '';
   let checkOutDateStr = '';
   if (checkInDefined) {
     checkInDateStr = `${checkInDate.getMonth() + 1}/${checkInDate.getDate()}/${checkInDate.getFullYear()}`;
+
   }
   if (checkOutDefined) {
     checkOutDateStr = `${checkOutDate.getMonth() + 1}/${checkOutDate.getDate()}/${checkOutDate.getFullYear()}`;
   }
+  console.log(checkInDate);
+  useEffect(() => {
+    if (checkInDate) {
+      setCheckInInput(checkInDateStr);
+    }
+  }, [checkInDate]);
   function flipFocus() {
     setFocusedCheckIn(!focusedCheckIn);
   }
@@ -26,7 +35,7 @@ function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, dropDo
           <span className={`${styles.checkIn} ${styles.box}`}>
             <div className={styles.checkLargeText}>Check-In</div>
             {/* <div className={styles.checkSmallText}>{checkInDefined ? checkInDateStr : 'Add date'}</div> */}
-            <input id="checkIn-input" placeholder={focusedCheckIn ? "MM/DD/YYYY" : "Add date"} type="text" onFocus={flipFocus} onBlur={flipFocus}></input>
+            <input id="checkIn-input" placeholder={focusedCheckIn ? "MM/DD/YYYY" : "Add date"} type="text" onFocus={flipFocus} onBlur={flipFocus} value={checkInInput} onChange={(e)=>setCheckInInput(e.target.value)}></input>
           </span>
           <span className={`${styles.checkOut} ${styles.box}`}>
             <div className={styles.checkLargeText}>CheckOut</div>
