@@ -21,6 +21,14 @@ function CheckingDropDown({ DateSelection, setCheckInDate, setCheckOutDate, setC
     setCheckInDateSet(false);
     setCheckingDatesSet(false);
   }
+  const calendarProps = {
+    setCheckInDate,
+    setCheckOutDate,
+    checkInDateSet,
+    setCheckingDatesSet,
+    checkInDate: checkingDates[0],
+    checkOutDate: checkingDates[0],
+  };
   return (
     <div className={styles.checkingDropdown}>
       <span id={styles.selectDates}>
@@ -32,7 +40,7 @@ function CheckingDropDown({ DateSelection, setCheckInDate, setCheckOutDate, setC
         </div>
       </span>
       {DateSelection}
-      <Calendar setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} setCheckInDateSet={setCheckInDateSet} checkInDateSet={checkInDateSet} setCheckingDatesSet={setCheckingDatesSet} checkInDate={checkingDates[0]} checkOutDate={checkingDates[1]}/>
+      <Calendar props={calendarProps}/>
       <div id={styles.keyboardIconCell}>
         <div id={styles.keyboardIconContainer}>
           <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" height="24px" width="24px">

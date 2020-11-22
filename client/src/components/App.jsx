@@ -7,7 +7,7 @@ import CheckingDropDown from './CheckingDropDown.jsx'
 import Fees from './Fees.jsx';
 import styles from './App.css';
 
-function App(props) {
+function App() {
   const [guestsBool, setGuestsBool] = useState(false);
   const [guestsNum, setGuests] = useState(1);
   const [adultsNum, setAdultsNum] = useState(1);
@@ -58,6 +58,14 @@ function App(props) {
     checkingDates: [checkInDate, checkOutDate],
     dropDownCheckingToggle,
   };
+  const checkingDropDownProps = {
+    setCheckInDate,
+    setCheckOutDate,
+    setCheckingDatesSet,
+    checkingDatesSet,
+    checkingDates: [checkInDate, checkOutDate],
+    dropDownCheckingToggle,
+  }
   return (
     <div className={styles.mainContainer}>
       <div className={styles.mainGrid}>

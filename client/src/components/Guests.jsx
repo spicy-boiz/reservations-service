@@ -4,7 +4,7 @@ import styles from './Guests.css';
 
 function Guests({ dropdown, guestNum, infantsNum, guestsBool }) {
   const combinedGuests = `${guestNum} ${guestNum > 1 ? 'guests' : 'guest'}`;
-  const infants = `${infantsNum > 0 ? infantsNum > 1 ? `, ${infantsNum} infants` : `, ${infantsNum} infant` : ''}`
+  const infants = `${infantsNum > 0 ? infantsNum > 1 ? `, ${infantsNum} infants` : `, ${infantsNum} infant` : ''}`;
   const combinedStr = `${combinedGuests}${infants}`;
   return (
     <button className={styles.guests} onClick={dropdown} type="button">
