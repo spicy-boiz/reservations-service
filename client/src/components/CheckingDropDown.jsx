@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './CheckingDropDown.css';
 import Calendar from './Calendar.jsx';
+import DateSelection from './DateSelection.jsx';
 
-function CheckingDropDown({props: { DateSelection, setCheckInDate, setCheckOutDate, setCheckingDatesSet, checkingDatesSet, checkingDates, dropDownCheckingToggle } }) {
+function CheckingDropDown({props: { setCheckInDate, setCheckOutDate, setCheckingDatesSet, checkingDatesSet, checkingDates, dropDownCheckingToggle } }) {
   const [checkInDateSet, setCheckInDateSet] = useState(false);
   let lengthOfStay;
   let checkInDateStr;
@@ -30,6 +31,13 @@ function CheckingDropDown({props: { DateSelection, setCheckInDate, setCheckOutDa
     checkInDate: checkingDates[0],
     checkOutDate: checkingDates[1],
   };
+  const dateSelectionProps = {
+    checkingDates,
+    setCheckInDate,
+    setCheckOutDate,
+    dropDownCheckingToggle,
+    setCheckInDateSet,
+  };
   return (
     <div className={styles.checkingDropdown}>
       <span id={styles.selectDates}>
@@ -40,7 +48,7 @@ function CheckingDropDown({props: { DateSelection, setCheckInDate, setCheckOutDa
           {checkingDatesSet ? `${checkInDateStr} - ${checkOutDateStr}` : 'Add your travel dates for exact pricing'}
         </div>
       </span>
-      {DateSelection}
+      <DateSelection onDropdown dateSelectionProps={dateSelectionProps}/>
       <Calendar props={calendarProps}/>
       <div id={styles.keyboardIconCell}>
         <div id={styles.keyboardIconContainer}>

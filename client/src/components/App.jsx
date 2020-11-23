@@ -59,7 +59,6 @@ function App() {
     dropDownCheckingToggle,
   };
   const checkingDropDownProps = {
-    DateSelection: <DateSelection onDropdown dateSelectionProps={dateSelectionProps} />,
     setCheckInDate,
     setCheckOutDate,
     setCheckingDatesSet,
