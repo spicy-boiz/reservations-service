@@ -18,6 +18,7 @@ function App() {
   const [checkOutDate, setCheckOutDate] = useState(undefined);
   const [listingData, setListingData] = useState(undefined);
   const [checkingDatesSet, setCheckingDatesSet] = useState(false);
+  const [focusedDate, setFocusedDate] = useState(undefined);
 
   function getListingData() {
     const listingID = window.location.pathname.split('/')[2];
@@ -65,6 +66,8 @@ function App() {
     checkingDatesSet,
     checkingDates: [checkInDate, checkOutDate],
     dropDownCheckingToggle,
+    focusedDate,
+    setFocusedDate,
   };
   return (
     <div className={styles.mainContainer}>

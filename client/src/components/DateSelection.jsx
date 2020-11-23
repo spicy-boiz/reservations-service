@@ -77,6 +77,7 @@ function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, setChe
         setFocusedDate(new Date(year, month, day));
         setCheckInDateSet(true);
         e.target.children[0].blur();
+        textInput.current.focus();
       } else if (checkingType = 'out') {
         console.log('here2');
         setCheckOutDate(new Date(year, month, day));
@@ -95,7 +96,7 @@ function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, setChe
               <div className={styles.checkLargeText}>Check-In</div>
               {/* <div className={styles.checkSmallText}>{checkInDefined ? checkInDateStr : 'Add date'}</div> */}
               <form onSubmit={(e) => submitCheckIn(e)}>
-                <input id="checkIn" placeholder={focusedCheckIn ? "MM/DD/YYYY" : "Add date"} type="text" onFocus={flipCheckInFocus} onBlur={(e) => (flipCheckInFocus(e))} value={checkInInput} onChange={(e) => setCheckInInput(e.target.value)} autoFocus={!checkInDefined} autocomplete="off"></input>
+                <input id="checkIn" placeholder={focusedCheckIn ? "MM/DD/YYYY" : "Add date"} type="text" onFocus={flipCheckInFocus} onBlur={(e) => (flipCheckInFocus(e))} value={checkInInput} onChange={(e) => setCheckInInput(e.target.value)} autoFocus={!checkInDefined}autocomplete="off"></input>
               </form>
             </label>
           </span>

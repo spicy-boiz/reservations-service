@@ -78,3 +78,7 @@
 .focused.checkIn {
   border-radius: 65% !important;
 }
+.form {
+  padding-bottom: 0px;
+  padding-top: 1px;
+}

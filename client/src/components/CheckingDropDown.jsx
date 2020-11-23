@@ -4,9 +4,9 @@ import styles from './CheckingDropDown.css';
 import Calendar from './Calendar.jsx';
 import DateSelection from './DateSelection.jsx';
 
-function CheckingDropDown({props: { setCheckInDate, setCheckOutDate, setCheckingDatesSet, checkingDatesSet, checkingDates, dropDownCheckingToggle } }) {
+function CheckingDropDown({props: { setCheckInDate, setCheckOutDate, setCheckingDatesSet, checkingDatesSet, checkingDates, dropDownCheckingToggle, focusedDate, setFocusedDate } }) {
   const [checkInDateSet, setCheckInDateSet] = useState(false);
-  const [focusedDate, setFocusedDate] = useState(undefined);
+
   let lengthOfStay;
   let checkInDateStr;
   let checkOutDateStr;
@@ -22,6 +22,7 @@ function CheckingDropDown({props: { setCheckInDate, setCheckOutDate, setChecking
     setCheckOutDate(undefined);
     setCheckInDateSet(false);
     setCheckingDatesSet(false);
+    setFocusedDate(undefined);
   }
   const calendarProps = {
     setCheckInDate,
