@@ -42,6 +42,7 @@ function CheckingDropDown({props: { setCheckInDate, setCheckOutDate, setChecking
     setCheckInDateSet,
     focusedDate,
     setFocusedDate,
+    setCheckingDatesSet,
   };
   return (
     <div className={styles.checkingDropdown}>

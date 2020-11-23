@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './DateSelection.css';
 
-function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, setCheckInDate, setCheckOutDate, dropDownCheckingToggle, setCheckInDateSet, focusedDate, setFocusedDate } }) {
+function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, setCheckInDate, setCheckOutDate, dropDownCheckingToggle, setCheckInDateSet, focusedDate, setFocusedDate, setCheckingDatesSet } }) {
   const checkInDefined = Boolean(checkingDates[0]);
   const checkOutDefined = Boolean(checkingDates[1]);
   const checkInDate = checkingDates[0];
@@ -11,6 +11,7 @@ function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, setChe
   const [focusedCheckOut, setFocusedCheckOut] = useState(false);
   const [checkInInput, setCheckInInput] = useState('');
   const [checkOutInput, setCheckOutInput] = useState('');
+  const textInput = React.createRef();
   let checkInDateStr = '';
   let checkOutDateStr = '';
   if (checkInDefined) {
@@ -22,53 +23,92 @@ function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, setChe
   useEffect(() => {
     if (checkInDate) {
       setCheckInInput(checkInDateStr);
+      setCheckOutInput(checkOutDateStr);
     } else {
       setCheckInInput('');
+      setCheckOutInput('');
     }
   }, [checkInDate]);
   function flipCheckInFocus(e) {
     setFocusedCheckIn(!focusedCheckIn);
   }
   function flipCheckOutFocus(e) {
+    console.log('here');
     setFocusedCheckOut(!focusedCheckOut);
   }
   function submitCheckIn(e) {
     e.preventDefault();
-    const split = e.target.checkIn.value.split('/');
-    const areNums = split.filter(((ele) => Number.isNaN(ele))).length === 0;
-    const inputIsDate = split.length === 3 && areNums;
-    // if (e.target.checkIn.value === '') {
-    //   setCheckInDate(undefined);
-    //   // setCheckInDateSet(false);
-    // } else
-    if (!inputIsDate) {
+    let split;
+    let areNums;
+    let inputIsDate;
+    let targetValue;
+    let checkingType;
+    if (!checkInDefined) {
+      checkingType = 'in';
+      targetValue = e.target.checkIn.value;
+      split = targetValue.split('/');
+      areNums = split.filter(((ele) => Number.isNaN(ele))).length === 0;
+      inputIsDate = split.length === 3 && areNums;
+    } else {
+      checkingType = 'out';
+      targetValue = e.target.checkOut.value;
+      split = targetValue.split('/');
+      areNums = split.filter(((ele) => Number.isNaN(ele))).length === 0;
+      inputIsDate = split.length === 3 && areNums;
+    }
+    if (targetValue === '') {
+      if (checkingType === 'in') {
+        setCheckInDate(undefined);
+        setCheckInDateSet(false);
+        setFocusedDate(undefined);
+      } else if (checkingType === 'out') {
+        console.log('here');
+        setCheckOutDate(undefined);
+        setCheckingDatesSet(false);
+      }
+    } else if (!inputIsDate) {
       window.alert('Please enter a valid date');
     } else {
       const year = split[2];
       const month = split[0] === 0 ? split[0] : parseInt(split[0], 10) - 1;
       const day = split[1];
-      setCheckInDate(new Date(year, month, day));
-      setFocusedDate(new Date(year, month, day));
-      setCheckInDateSet(true);
+      if (checkingType === 'in') {
+        setCheckInDate(new Date(year, month, day));
+        setFocusedDate(new Date(year, month, day));
+        setCheckInDateSet(true);
+        e.target.children[0].blur();
+      } else if (checkingType = 'out') {
+        console.log('here2');
+        setCheckOutDate(new Date(year, month, day));
+        setFocusedDate(undefined);
+        setCheckingDatesSet(true);
+      }
     }
   }
+  console.log(checkInDefined);
   if (onDropdown) {
     return (
       <div className={`${styles.checkingContainer} ${styles.dropdown}`} >
         <div className={styles.insideCheckingContainer}>
-          <span className={`${styles.checkIn} ${styles.box}`}>
-            <div className={styles.checkLargeText}>Check-In</div>
-            {/* <div className={styles.checkSmallText}>{checkInDefined ? checkInDateStr : 'Add date'}</div> */}
-            <form onSubmit={(e) => submitCheckIn(e)}>
-              <input id="checkIn" placeholder={focusedCheckIn ? "MM/DD/YYYY" : "Add date"} type="text" onFocus={flipCheckInFocus} onBlur={(e) => (flipCheckInFocus(e))} value={checkInInput} onChange={(e) => setCheckInInput(e.target.value)} autoFocus={true}></input>
-            </form>
+          <span className={`${styles.checkIn} ${styles.box} ${focusedCheckIn ? styles.focused : ''}`}>
+            <label for="checkIn">
+              <div className={styles.checkLargeText}>Check-In</div>
+              {/* <div className={styles.checkSmallText}>{checkInDefined ? checkInDateStr : 'Add date'}</div> */}
+              <form onSubmit={(e) => submitCheckIn(e)}>
+                <input id="checkIn" placeholder={focusedCheckIn ? "MM/DD/YYYY" : "Add date"} type="text" onFocus={flipCheckInFocus} onBlur={(e) => (flipCheckInFocus(e))} value={checkInInput} onChange={(e) => setCheckInInput(e.target.value)} autoFocus={!checkInDefined} autocomplete="off"></input>
+              </form>
+            </label>
           </span>
-          <span className={`${styles.checkOut} ${styles.box}`}>
-            <div className={styles.checkLargeText}>CheckOut</div>
-            <form>
-              <input id="checkOut-input" placeholder={focusedCheckOut ? "MM/DD/YYYY" : "Add date"} type="text" onFocus={flipCheckOutFocus} onBlur={flipCheckOutFocus} onChange={(e) => SetCheckInInput(e.target.value)} />
-            </form>
-            {/* <div className={styles.checkSmallText}>{checkOutDefined ? checkOutDateStr : 'Add date'}</div> */}
+          <span className={`${styles.checkOut} ${styles.box} ${focusedCheckOut ? styles.focused : ''} ${checkInDefined ? ''
+          : styles.disabled}`}>
+            <label for="checkOut">
+              <div className={styles.checkLargeText}>CheckOut</div>
+              <form onSubmit={(e) => submitCheckIn(e)} className={checkInDefined ? ''
+          : styles.disabled}>
+                <input id="checkOut" ref={textInput} placeholder={focusedCheckOut ? "MM/DD/YYYY" : "Add date"} type="text" value={checkOutInput} onFocus={flipCheckOutFocus} onBlur={flipCheckOutFocus} value={checkOutInput} onChange={(e) => setCheckOutInput(e.target.value)} disabled={checkInDate ? false : true} autoFocus={checkInDefined} autocomplete="off"/>
+              </form>
+              {/* <div className={styles.checkSmallText}>{checkOutDefined ? checkOutDateStr : 'Add date'}</div> */}
+            </label>
           </span>
         </div>
       </div>
