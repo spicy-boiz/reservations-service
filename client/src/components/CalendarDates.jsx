@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './CalendarDates.css';
 
@@ -13,11 +13,12 @@ function CalendarDates({ dates, setCheckInDate, setCheckOutDate,
       const checkOutSecs = Boolean(checkOutDate) ? checkOutDate.getTime() : undefined;
       const focusedDateSecs = Boolean(focusedDate) ? focusedDate.getTime() : undefined;
       const focusedCheckIn = focusedDateSecs === checkInSecs ? styles.focused : '';
+      const bothDatesSet = Boolean(checkInDate) && Boolean(checkOutDate);
       // Fill in selected dates in black && allow them to be highlighted
       if (dateObj.getTime() === checkInSecs) {
         const days_highlight_checkIn = `${styles.days} ${styles.highlight} ${styles.checkIn} ${focusedCheckIn}`;
         return (
-          <td className={days_highlight_checkIn} onMouseOver={() => setHighlightDates(dateObj)} onMouseLeave={() => setFocusedDate(checkInDate)}>
+          <td className={days_highlight_checkIn} onMouseOver={bothDatesSet ? '' : () => setHighlightDates(dateObj)} onMouseLeave={bothDatesSet ? '': () => setFocusedDate(checkInDate)}>
             <div className={`${styles.innerCell} ${styles.filled}`}>
               {dateObj.getDate()}
             </div>
@@ -27,7 +28,7 @@ function CalendarDates({ dates, setCheckInDate, setCheckOutDate,
       if (dateObj.getTime() === checkOutSecs) {
         const days_highlight_checkOut = `${styles.days} ${styles.highlight} ${styles.checkOut}`;
         return (
-          <td className={days_highlight_checkOut} onMouseOver={() => setHighlightDates(dateObj)} onMouseLeave={() => setFocusedDate(checkInDate)}>
+          <td className={days_highlight_checkOut} onMouseOver={() => setHighlightDates(dateObj)} onMouseLeave={bothDatesSet ? '' :() => setFocusedDate(checkInDate)}>
             <div className={`${styles.innerCell} ${styles.filled}`}>
               {dateObj.getDate()}
             </div>
@@ -98,6 +99,7 @@ function CalendarDates({ dates, setCheckInDate, setCheckOutDate,
     }
     return <td />;
   });
+  useEffect(() => console.log(focusedDate), [focusedDate]);
   function setHighlightDates(date) {
     // set dates between check-in date and moused over date to grey
     setFocusedDate(date);
