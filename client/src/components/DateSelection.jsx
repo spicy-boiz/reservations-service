@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './DateSelection.css';
 
-function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, setCheckInDate, setCheckOutDate, dropDownCheckingToggle, setCheckInDateSet } }) {
+function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, setCheckInDate, setCheckOutDate, dropDownCheckingToggle, setCheckInDateSet, focusedDate, setFocusedDate } }) {
   const checkInDefined = Boolean(checkingDates[0]);
   const checkOutDefined = Boolean(checkingDates[1]);
   const checkInDate = checkingDates[0];
@@ -37,7 +37,6 @@ function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, setChe
     const split = e.target.checkIn.value.split('/');
     const areNums = split.filter(((ele) => Number.isNaN(ele))).length === 0;
     const inputIsDate = split.length === 3 && areNums;
-    console.log('1', e.target.checkIn.value.length, '2');
     // if (e.target.checkIn.value === '') {
     //   setCheckInDate(undefined);
     //   // setCheckInDateSet(false);
@@ -48,10 +47,9 @@ function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, setChe
       const year = split[2];
       const month = split[0] === 0 ? split[0] : parseInt(split[0], 10) - 1;
       const day = split[1];
-      console.log(year,',',month,',',day);
-      console.log(new Date(year, month, day));
       setCheckInDate(new Date(year, month, day));
-      console.log(e.target.checkIn.value);
+      setFocusedDate(new Date(year, month, day));
+      setCheckInDateSet(true);
     }
   }
   if (onDropdown) {

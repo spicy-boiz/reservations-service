@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CalendarDates from './CalendarDates.jsx';
 import styles from './Calendar.css';
 
-function Calendar({props: { setCheckInDate, setCheckOutDate, checkInDateSet, setCheckInDateSet, setCheckingDatesSet, checkInDate, checkOutDate }}) {
+function Calendar({props: { setCheckInDate, setCheckOutDate, checkInDateSet, setCheckInDateSet, setCheckingDatesSet, checkInDate, checkOutDate, focusedDate, setFocusedDate}}) {
   const [dateLeft, setDateLeft] = useState(new Date());
   const oneMonthUp = (new Date(dateLeft)).setMonth(dateLeft.getMonth() + 1);
   const [dateRight, setDateRight] = useState(new Date(oneMonthUp));
@@ -56,8 +56,8 @@ function Calendar({props: { setCheckInDate, setCheckOutDate, checkInDateSet, set
           </svg>
         </button>
       </div>
-      <CalendarDates side="left" currMonth={dateLeft.getMonth()} dates={createDatesArray(dateLeft)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} checkInDate={checkInDate} checkOutDate={checkOutDate} />
-      <CalendarDates side="right" currMonth={dateRight.getMonth()} dates={createDatesArray(dateRight)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} checkInDate={checkInDate} checkOutDate={checkOutDate} />
+      <CalendarDates side="left" currMonth={dateLeft.getMonth()} dates={createDatesArray(dateLeft)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} checkInDate={checkInDate} checkOutDate={checkOutDate} focusedDate={focusedDate} setFocusedDate={setFocusedDate}/>
+      <CalendarDates side="right" currMonth={dateRight.getMonth()} dates={createDatesArray(dateRight)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} checkInDate={checkInDate} checkOutDate={checkOutDate} focusedDate={focusedDate} setFocusedDate={setFocusedDate} />
     </div>
   );
 }

@@ -5,8 +5,7 @@ import PropTypes from 'prop-types';
 import styles from './CalendarDates.css';
 
 function CalendarDates({ dates, setCheckInDate, setCheckOutDate,
-  setCheckInDateSet, checkInDateSet, setCheckingDatesSet, side, checkInDate, checkOutDate }) {
-  const [focusedDate, setFocusedDate] = useState(undefined);
+  setCheckInDateSet, checkInDateSet, setCheckingDatesSet, side, checkInDate, checkOutDate, focusedDate, setFocusedDate }) {
   const datesToHTML = dates.map((dateObj, index) => {
     if (dateObj !== '') {
       const checkInSecs = Boolean(checkInDate) ? checkInDate.getTime() : undefined;
@@ -60,7 +59,8 @@ function CalendarDates({ dates, setCheckInDate, setCheckOutDate,
         );
       }
       // Make the focused date have a unique class
-      if (dateObj === focusedDate) {
+      if (dateObj.getTime() === focusedDateSecs) {
+        console.log('here');
         return (
           <td className={`${styles.days} ${styles.highlight} ${styles.endFocus}`} onClick={() => setCheckDate(dateObj)} onMouseOver={() => setHighlightDates(dateObj)} onMouseLeave={() => setFocusedDate(checkInDate)}>
             <div className={styles.innerCell}>
@@ -99,13 +99,14 @@ function CalendarDates({ dates, setCheckInDate, setCheckOutDate,
     }
     return <td />;
   });
-  useEffect(() => console.log(focusedDate), [focusedDate]);
+  useEffect(() => console.log(focusedDate, 'checkin: ', checkInDate), [focusedDate]);
   function setHighlightDates(date) {
     // set dates between check-in date and moused over date to grey
     setFocusedDate(date);
   }
   function setCheckDate(date) {
     if (!checkInDateSet) {
+      setFocusedDate(date);
       setCheckInDate(date);
       setCheckInDateSet(true);
     } else {

@@ -6,6 +6,7 @@ import DateSelection from './DateSelection.jsx';
 
 function CheckingDropDown({props: { setCheckInDate, setCheckOutDate, setCheckingDatesSet, checkingDatesSet, checkingDates, dropDownCheckingToggle } }) {
   const [checkInDateSet, setCheckInDateSet] = useState(false);
+  const [focusedDate, setFocusedDate] = useState(undefined);
   let lengthOfStay;
   let checkInDateStr;
   let checkOutDateStr;
@@ -30,6 +31,8 @@ function CheckingDropDown({props: { setCheckInDate, setCheckOutDate, setChecking
     setCheckingDatesSet,
     checkInDate: checkingDates[0],
     checkOutDate: checkingDates[1],
+    focusedDate,
+    setFocusedDate,
   };
   const dateSelectionProps = {
     checkingDates,
@@ -37,6 +40,8 @@ function CheckingDropDown({props: { setCheckInDate, setCheckOutDate, setChecking
     setCheckOutDate,
     dropDownCheckingToggle,
     setCheckInDateSet,
+    focusedDate,
+    setFocusedDate,
   };
   return (
     <div className={styles.checkingDropdown}>
