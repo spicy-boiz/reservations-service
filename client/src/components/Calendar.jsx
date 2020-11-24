@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import CalendarDates from './CalendarDates.jsx';
 import styles from './Calendar.css';
 
 function Calendar({props: { setCheckInDate, setCheckOutDate, checkInDateSet, setCheckInDateSet, setCheckingDatesSet, checkInDate, checkOutDate, focusedDate, setFocusedDate}}) {
-  const [dateLeft, setDateLeft] = useState(new Date());
-  const oneMonthUp = (new Date(dateLeft)).setMonth(dateLeft.getMonth() + 1);
+  const startingDate = checkInDate || new Date();
+  const oneMonthUp = (new Date(startingDate)).setMonth(startingDate.getMonth() + 1);
+  const [dateLeft, setDateLeft] = useState(startingDate);
   const [dateRight, setDateRight] = useState(new Date(oneMonthUp));
 
   function decreaseMonth() {
