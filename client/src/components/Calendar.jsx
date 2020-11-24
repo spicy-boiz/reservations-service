@@ -1,24 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import CalendarDates from './CalendarDates.jsx';
 import styles from './Calendar.css';
 
 function Calendar({props: { setCheckInDate, setCheckOutDate, checkInDateSet, setCheckInDateSet, setCheckingDatesSet, checkInDate, checkOutDate, focusedDate, setFocusedDate}}) {
+  const firstRender = useRef(true);
   const startingDate = checkInDate || new Date();
-  const oneMonthUp = (new Date(startingDate)).setMonth(startingDate.getMonth() + 1);
+  const oneMonthUp = getPlusOneMonth(startingDate);
   const [dateLeft, setDateLeft] = useState(startingDate);
-  const [dateRight, setDateRight] = useState(new Date(oneMonthUp));
-
+  // const [dateRight, setDateRight] = useState(new Date(oneMonthUp));
+  const dateRight = getPlusOneMonth(dateLeft);
+  const offGridDate = getPlusOneMonth(dateRight);
+  const nextLeftDate = firstRender.current ? dateLeft : dateRight;
+  console.log(offGridDate.toLocaleString('default', { month: 'long', year: 'numeric' }));
+  useEffect(() => {
+    firstRender.current = false;
+  }, []);
   function decreaseMonth() {
     const today = new Date();
     if (dateLeft.getMonth() > today.getMonth() || dateLeft.getYear() > today.getYear()) {
       setDateLeft(new Date(dateLeft.setMonth(dateLeft.getMonth() - 1)));
-      setDateRight(new Date(dateRight.setMonth(dateRight.getMonth() - 1)));
+      // setDateRight(new Date(dateRight.setMonth(dateRight.getMonth() - 1)));
     }
   }
   function increaseMonth() {
-    setDateLeft(new Date(dateLeft.setMonth(dateLeft.getMonth() + 1)));
-    setDateRight(new Date(dateRight.setMonth(dateRight.getMonth() + 1)));
+    setDateLeft(new Date(nextLeftDate));
+    console.log('next');
+    // setDateLeft(new Date(dateLeft.setMonth(dateLeft.getMonth() + 1)));
+    // setDateRight(new Date(dateRight.setMonth(dateRight.getMonth() + 1)));
+  }
+  function getPlusOneMonth(date) {
+    const tempDate = new Date(date);
+    return new Date(tempDate.setMonth(date.getMonth() + 1));
   }
   function createDatesArray(dateObj) {
     //create new array with 35 elements
@@ -57,8 +70,13 @@ function Calendar({props: { setCheckInDate, setCheckOutDate, checkInDateSet, set
           </svg>
         </button>
       </div>
-      <CalendarDates side="left" currMonth={dateLeft.getMonth()} dates={createDatesArray(dateLeft)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} checkInDate={checkInDate} checkOutDate={checkOutDate} focusedDate={focusedDate} setFocusedDate={setFocusedDate}/>
-      <CalendarDates side="right" currMonth={dateRight.getMonth()} dates={createDatesArray(dateRight)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} checkInDate={checkInDate} checkOutDate={checkOutDate} focusedDate={focusedDate} setFocusedDate={setFocusedDate} />
+      <CalendarDates key={dateLeft.getTime() + (new Date()).getTime()} side="left" currMonth={dateLeft.getMonth()} dates={createDatesArray(dateLeft)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} checkInDate={checkInDate} checkOutDate={checkOutDate} focusedDate={focusedDate} setFocusedDate={setFocusedDate} />
+      <CalendarDates key={dateRight.getTime() + (new Date()).getTime()} side="right" currMonth={dateRight.getMonth()} dates={createDatesArray(dateRight)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} checkInDate={checkInDate} checkOutDate={checkOutDate} focusedDate={focusedDate} setFocusedDate={setFocusedDate} />
+      <div id={styles.offGridBar}>
+        <span id={styles.offGridSpan}>{`${offGridDate.toLocaleString('default', { month: 'long', year: 'numeric' })}`}</span>
+      </div>
+      {!(firstRender.current)
+      && <CalendarDates key={offGridDate.getTime() + (new Date()).getTime()} side="offGrid" currMonth={offGridDate.getMonth()} dates={createDatesArray(offGridDate)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} checkInDate={checkInDate} checkOutDate={checkOutDate} focusedDate={focusedDate} setFocusedDate={setFocusedDate} />}
     </div>
   );
 }

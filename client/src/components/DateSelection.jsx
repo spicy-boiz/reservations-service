@@ -33,7 +33,6 @@ function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, setChe
     setFocusedCheckIn(!focusedCheckIn);
   }
   function flipCheckOutFocus(e) {
-    console.log('here');
     setFocusedCheckOut(!focusedCheckOut);
   }
   function submitCheckIn(e) {
@@ -62,7 +61,6 @@ function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, setChe
         setCheckInDateSet(false);
         setFocusedDate(undefined);
       } else if (checkingType === 'out') {
-        console.log('here');
         setCheckOutDate(undefined);
         setCheckingDatesSet(false);
       }
@@ -79,14 +77,12 @@ function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, setChe
         e.target.children[0].blur();
         textInput.current.focus();
       } else if (checkingType = 'out') {
-        console.log('here2');
         setCheckOutDate(new Date(year, month, day));
         setFocusedDate(undefined);
         setCheckingDatesSet(true);
       }
     }
   }
-  console.log(checkInDefined);
   if (onDropdown) {
     return (
       <div className={`${styles.checkingContainer} ${styles.dropdown}`} >

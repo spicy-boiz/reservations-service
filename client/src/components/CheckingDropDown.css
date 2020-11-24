@@ -5,7 +5,8 @@
   grid-template-columns: 1fr 1fr;
   /* grid-template-rows: 80px minmax(290px, 320px) 35px; */
   grid-template-rows: 80px minmax(min-content, max-content) 35px;
-  min-width: 597px;
+  /* min-width: 597px; */
+  width: 597px;
   /* min-height: 425px; */
   /* height: 420px; */
   background: rgb(255, 255, 255);
