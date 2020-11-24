@@ -22,6 +22,7 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 20px;
+  cursor: default;
 }
 #calendarBar > button {
   background-color: white;
@@ -41,15 +42,36 @@
   width: 12px;
 }
 
-#leftSpan {
+.leftMonthSpan {
   padding-right: 170px;
 }
 #offGridBar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items:center;
   grid-column: 4 / span 1;
   grid-row: 1 / span 1;
   padding-top: 12px;
   height: 25px;
+}
+.leftMonthSpan.animate, .rightMonthSpan.animate, .offGridSpan.animate {
+  position: relative;
+}
+.leftMonthSpan.animate, .offGridSpan.animate {
+  animation: LeftAndOffGridSlide 0.35s 1 forwards;
+}
+.rightMonthSpan.animate {
+  animation: RightSlide 0.35s 1 forwards;
+}
+
+@keyFrames LeftAndOffGridSlide {
+  /* 0% {right: 0px; cursor: pointer} */
+  0% {right: 21px; cursor: pointer}
+  99% {cursor: pointer}
+  100% {right: 340px; cursor: default}
+}
+@keyFrames RightSlide {
+  0% {right: 0px; cursor: pointer}
+  99% {cursor: pointer}
+  100% {right: 322px; cursor: default}
 }

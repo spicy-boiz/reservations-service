@@ -1,7 +1,15 @@
 .calendarDaysSpan {
   padding-top: 12px;
   position:relative;
-  animation: slide 0.5s 1 forwards;
+}
+.calendarDaysSpan.left.animate {
+  animation: rightSlide 0.35s 1 forwards;
+}
+.calendarDaysSpan.right.animate {
+  animation: rightSlide 0.35s 1 forwards;
+}
+.calendarDaysSpan.offGrid.animate {
+  animation: offGridSlide 0.35s 1 forwards;
 }
 .calendarDaysSpan.left {
   grid-column: 1 / span 1;
@@ -89,7 +97,11 @@
   padding-top: 1px;
 }
 
-@keyframes slide {
+@keyframes rightSlide {
   0% {right: 0px}
   100% {right: 319px}
+}
+@keyframes offGridSlide {
+  0% {right: 0px}
+  100% {right: 338px}
 }

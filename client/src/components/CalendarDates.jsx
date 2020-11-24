@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 import styles from './CalendarDates.css';
 
 function CalendarDates({ dates, setCheckInDate, setCheckOutDate,
-  setCheckInDateSet, checkInDateSet, setCheckingDatesSet, side, checkInDate, checkOutDate, focusedDate, setFocusedDate }) {
+  setCheckInDateSet, checkInDateSet, setCheckingDatesSet, side, checkInDate, checkOutDate, focusedDate, setFocusedDate, firstRender }) {
+    console.log('render');
   const datesToHTML = dates.map((dateObj, index) => {
     if (dateObj !== '') {
       const checkInSecs = Boolean(checkInDate) ? checkInDate.getTime() : undefined;
@@ -114,7 +115,7 @@ function CalendarDates({ dates, setCheckInDate, setCheckOutDate,
     }
   }
   return (
-    <span className={`${styles.calendarDaysSpan} ${styles[side]}`}>
+    <span className={`${styles.calendarDaysSpan} ${styles[side]} ${firstRender ? '' : styles.animate}`}>
       <table className={`${styles.calendarDaysTable} ${styles[side]}`}>
         <tr className={styles.dayNames}>
           <th>Su</th>
