@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './CheckingDropDown.css';
 import Calendar from './Calendar.jsx';
+import DateSelection from './DateSelection.jsx';
 
-function CheckingDropDown({ DateSelection, setCheckInDate, setCheckOutDate, setCheckingDatesSet, checkingDatesSet, checkingDates, dropDownCheckingToggle }) {
-  const [checkInDateSet, setCheckInDateSet] = useState(false);
+function CheckingDropDown({props: { setCheckInDate, setCheckOutDate, setCheckingDatesSet, checkingDatesSet, checkingDates, dropDownCheckingToggle, focusedDate, setFocusedDate } }) {
   let lengthOfStay;
   let checkInDateStr;
   let checkOutDateStr;
-  console.log(checkingDatesSet);
-  if (checkingDatesSet) {
+  if (checkingDates[0] && checkingDates[1]) {
     lengthOfStay = (new Date(checkingDates[1] - checkingDates[0])).getDate();
     checkInDateStr = `${checkingDates[0].toLocaleString('default', { month: 'short' })}
       ${checkingDates[0].getDate()}, ${checkingDates[0].getFullYear()}`;
@@ -19,9 +18,27 @@ function CheckingDropDown({ DateSelection, setCheckInDate, setCheckOutDate, setC
   function clearDates() {
     setCheckInDate(undefined);
     setCheckOutDate(undefined);
-    setCheckInDateSet(false);
     setCheckingDatesSet(false);
+    setFocusedDate(undefined);
   }
+  const calendarProps = {
+    setCheckInDate,
+    setCheckOutDate,
+    setCheckingDatesSet,
+    checkInDate: checkingDates[0],
+    checkOutDate: checkingDates[1],
+    focusedDate,
+    setFocusedDate,
+  };
+  const dateSelectionProps = {
+    checkingDates,
+    setCheckInDate,
+    setCheckOutDate,
+    dropDownCheckingToggle,
+    focusedDate,
+    setFocusedDate,
+    setCheckingDatesSet,
+  };
   return (
     <div className={styles.checkingDropdown}>
       <span id={styles.selectDates}>
@@ -32,8 +49,8 @@ function CheckingDropDown({ DateSelection, setCheckInDate, setCheckOutDate, setC
           {checkingDatesSet ? `${checkInDateStr} - ${checkOutDateStr}` : 'Add your travel dates for exact pricing'}
         </div>
       </span>
-      {DateSelection}
-      <Calendar setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} setCheckInDateSet={setCheckInDateSet} checkInDateSet={checkInDateSet} setCheckingDatesSet={setCheckingDatesSet} />
+      <DateSelection onDropdown dateSelectionProps={dateSelectionProps}/>
+      <Calendar props={calendarProps}/>
       <div id={styles.keyboardIconCell}>
         <div id={styles.keyboardIconContainer}>
           <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" height="24px" width="24px">

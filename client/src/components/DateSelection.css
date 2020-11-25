@@ -24,15 +24,27 @@
   padding-top: 10px;
   padding-left: 12px;
 }
-.box > .checkLargeText {
+.checkLargeText {
   font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
 }
-.box > .checkSmallText {
+.checkSmallText {
   font-size: 14px;
   color: rgb(113, 113, 113);
   line-height: 18px;
+  padding-top: 1px;
+  padding-left: 2px;
+}
+input, input:focus {
+  font-size: 14px;
+  /* color: rgb(113, 113, 113); */
+  color: black;
+  line-height: 18px;
+  outline: none;
+  width:100%;
+  background: transparent;
+  border: none;
 }
 .insideCheckingContainer {
   display: grid;
@@ -69,4 +81,13 @@
   grid-row: 1 / span 1;
   border-radius: 0px 6px 6px 0px;
   background-color: transparent;
+}
+.checkIn.box.focused {
+  box-shadow: rgb(34, 34, 34) 0px 0px 0px 2px inset;
+}
+.checkOut.box.focused {
+  box-shadow: rgb(34, 34, 34) 0px 0px 0px 2px inset;
+}
+.disabled, .disabled > ::placeholder {
+  color: rgb(224, 224, 224) !important;
 }

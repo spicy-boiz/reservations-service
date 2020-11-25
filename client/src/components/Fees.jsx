@@ -5,7 +5,6 @@ function Fees({ listingData, checkInDate, checkOutDate }) {
   let lengthOfStay;
   if (checkInDate && checkOutDate) {
     lengthOfStay = (new Date(checkOutDate - checkInDate)).getDate();
-    console.log(lengthOfStay);
   }
   return (
     <div id={styles.fees}>

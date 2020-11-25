@@ -1,15 +1,24 @@
 .calendarDaysSpan {
   padding-top: 12px;
+  position:relative;
 }
 .calendarDaysSpan.left {
-  grid-column: 1 / span 1;
+  grid-column: 3 / span 1;
   grid-row: 2 / span 1;
   padding-right: 20px;
 }
 .calendarDaysSpan.right {
-  grid-column: 2 / span 1;
+  grid-column: 4 / span 1;
   grid-row: 2 / span 1;
   padding-left: 20px;
+}
+.calendarDaysSpan.offGridRight {
+  grid-column: 6 / span 1;
+  grid-row: 2 / span 1;
+}
+.calendarDaysSpan.offGridLeft {
+  grid-column: 1 / span 1;
+  grid-row: 2 / span 1;
 }
 .calendarDaysTable {
   width: 100%;
@@ -32,11 +41,81 @@
 .days {
   font-size: 14px;
   font-weight: 600;
-  height: 40px;
-  width: 40px;
+  height: 40px !important;
+  width: 40px !important;
+  overflow: visible;
 }
-.days:hover {
+.innerCell.filled {
+  background:black;
+  color: white;
   border-radius: 100%;
-  border: 1.5px solid black;
   cursor: pointer;
+}
+.innerCell.blocked {
+  text-decoration: line-through;
+  color: rgb(176, 176, 176);
+  cursor: default;
+  font-weight: 400;
+}
+.innerCell.blocked:hover {
+  border: 1.5px solid transparent;
+  border-radius: 100%;
+}
+
+.days.highlight {
+  background: rgb(247,247,247);
+}
+.innerCell {
+  border-radius: 100%;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  height: 95%;
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.innerCell:hover {
+  border: 1.5px solid black;
+}
+.days.highlight.checkIn {
+  border-radius: 65% 0px 0px 65%;
+}
+.days.highlight.checkOut, .days.highlight.endFocus {
+  border-radius: 0px 65% 65% 0px;
+}
+.focused.checkIn {
+  border-radius: 65% !important;
+}
+.form {
+  padding-bottom: 0px;
+  padding-top: 1px;
+}
+.calendarDaysSpan.left.animateForward, .calendarDaysSpan.right.animateForward {
+  animation: rightAndLeftSlideForward 0.35s 1 forwards;
+}
+.calendarDaysSpan.offGridRight.animateForward {
+  animation: offGridRightSlideForward 0.35s 1 forwards;
+}
+.calendarDaysSpan.left.animateBack, .calendarDaysSpan.right.animateBack {
+  animation: rightAndLeftSlideBack 0.35s 1 forwards;
+}
+.calendarDaysSpan.offGridLeft.animateBack {
+  animation: offGridLeftSlideBack 0.35s 1 forwards;
+}
+@keyframes rightAndLeftSlideForward {
+  0% {right: 0px}
+  100% {right: 319px}
+}
+@keyframes offGridRightSlideForward {
+  0% {right: 0px}
+  100% {right: 338px}
+}
+@keyframes rightAndLeftSlideBack {
+  0% {left: 0px}
+  100% {left: 319px}
+}
+@keyframes offGridLeftSlideBack {
+  0% {left: 0px}
+  100% {left: 335px}
 }

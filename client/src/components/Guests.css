@@ -17,6 +17,7 @@
   font-weight: 800;
   line-height: 12px;
   text-transform: uppercase;
+  text-align: left;
 }
 #GuestsString {
   font-size: 14px;

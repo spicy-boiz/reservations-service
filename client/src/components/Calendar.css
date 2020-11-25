@@ -2,13 +2,16 @@
   grid-column: 1 / span 2;
   grid-row: 2 / span 1;
   display: grid;
-  grid-template-columns:1fr 1fr;
+  /* grid-template-columns:1fr 1fr; */
+  /* grid-template-columns: 298.5px 298.5px 50px 298.5px; */
+  grid-template-columns: 298.5px 50px 298.5px 298.5px 50px 298.5px;
   grid-template-rows: 30px minmax(min-content, max-content);
-  width: 100%;
+  justify-self: center;
   height:100%;
 }
 #calendarBar {
-  grid-column: 1 / end;
+  /* grid-column: 1 / end; */
+  grid-column: 3 / span 2;
   grid-row: 1 / span 1;
   display: flex;
   justify-content: space-between;
@@ -16,10 +19,11 @@
   height: 25px;
   padding-top: 12px;
 }
-#calendarBar > span {
+#calendarBar > span, #offGridRightBar > span, #offGridLeftBar > span {
   font-weight: 600;
   font-size: 16px;
   line-height: 20px;
+  cursor: default;
 }
 #calendarBar > button {
   background-color: white;
@@ -27,6 +31,7 @@
   cursor: pointer;
   border: 0px;
   padding: 10px;
+  z-index: 9;
 }
 #calendarBar > button:focus {
   outline: none;
@@ -38,21 +43,66 @@
   height: 12px;
   width: 12px;
 }
-/* #clearDatesButton {
-  background-color: white;
-  border-radius: 8px;
-  font-size: 16px;
-  line-height: 20px;
-  padding: 10px;
-  border: 0px;
-  width: auto;
-  text-decoration: underline;
-  font-weight: 600;
-  cursor: pointer;
+.backButton:disabled {
+  cursor: not-allowed !important;
+  color: rgb(221, 221, 221) !important;
+  background-color: white !important;
+  opacity: 0.1 !important;
 }
-#clearDatesButton:hover {
-  background-color: rgb(246 246 246);
-} */
-#leftSpan {
+.leftMonthSpan {
   padding-right: 170px;
+}
+#offGridRightBar {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  grid-column: 6 / span 1;
+  grid-row: 1 / span 1;
+  padding-top: 12px;
+  height: 25px;
+}
+#offGridLeftBar {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+  padding-top: 12px;
+  height: 25px;
+}
+.leftMonthSpan, .rightMonthSpan, .offGridRightSpan, .offGridLeftSpan {
+  position: relative;
+}
+.leftMonthSpan.animateForward, .offGridRightSpan.animateForward {
+  animation: LeftAndOffGridSlideForward 0.35s 1 forwards;
+}
+.rightMonthSpan.animateForward {
+  animation: RightSlideForward 0.35s 1 forwards;
+}
+.offGridLeftSpan.animateBack, .rightMonthSpan.animateBack {
+  animation: RightAndOffGridSlideBack 0.35s 1 forwards;
+}
+.leftMonthSpan.animateBack {
+  animation: LeftSlideBack 0.35s 1 forwards;
+}
+
+@keyFrames LeftAndOffGridSlideForward {
+  /* 0% {right: 0px; cursor: pointer} */
+  0% {right: 21px; cursor: pointer}
+  99% {cursor: pointer}
+  100% {right: 340px; cursor: default}
+}
+@keyFrames RightSlideForward {
+  0% {right: 0px; cursor: pointer}
+  99% {cursor: pointer}
+  100% {right: 322px; cursor: default}
+}
+@keyFrames RightAndOffGridSlideBack {
+  /* 0% {right: 0px; cursor: pointer} */
+  0% {left: 0px}
+  100% {left: 335px}
+}
+@keyFrames LeftSlideBack {
+  0% {left: 0px}
+  100% {left: 318px}
 }

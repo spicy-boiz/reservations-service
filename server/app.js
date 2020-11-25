@@ -9,8 +9,9 @@ const app = express();
 app.use(morgan('dev'));
 app.use('/', express.json());
 // app.use('/api/reservations/:id', express.static(path.join(__dirname, '..', 'client', 'dist')));
-app.use('/', express.static(path.join(__dirname, '..', 'client', 'dist')));
-app.use('/bundle.js', express.static(path.join(__dirname, '..', 'client', 'dist', 'build', 'bundle.js')));
+app.use('/listings/:id', express.static(path.join(__dirname, '..', 'client', 'dist')));
+// app.use('/:id', express.static(path.join(__dirname, '..', 'client', 'dist')));
+// app.use('/bundle.js', express.static(path.join(__dirname, '..', 'client', 'dist', 'build', 'bundle.js')));
 // app.get('/reservations/:id', (req, res) => {
 //   Helpers.listingModel.find({ id: req.params.id })
 //     .then((listings) => {
