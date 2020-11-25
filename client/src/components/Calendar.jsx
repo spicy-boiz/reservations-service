@@ -4,32 +4,21 @@ import PropTypes from 'prop-types';
 import CalendarDates from './CalendarDates.jsx';
 import styles from './Calendar.css';
 
-function Calendar({ props: { setCheckInDate, setCheckOutDate, checkInDateSet, setCheckInDateSet, setCheckingDatesSet, checkInDate, checkOutDate, focusedDate, setFocusedDate } }) {
-  const firstRender = useRef(true);
+function Calendar({ props: { setCheckInDate, setCheckOutDate, setCheckingDatesSet, checkInDate, checkOutDate, focusedDate, setFocusedDate } }) {
+  // const firstRender = useRef(true);
   const startingDate = checkInDate || new Date();
   const [forwardRender, setForwardRender] = useState(false);
   const [backRender, setBackRender] = useState(false);
-  // const [dateLeft, setDateLeft] = useState(startingDate);
-  // const dateRight = getPlusOneMonth(dateLeft);
-  // const offGridRightDate = getPlusOneMonth(dateRight);
-  // const offGridLeftDate = getMinusOneMonth(dateLeft);
   const [currDate, setCurrDate] = useState(startingDate);
   const [offGridLeftDate, setOffGridLeftDate] = useState(getMinusOneMonth(currDate));
   const dateLeft = getPlusOneMonth(offGridLeftDate);
   const [dateRight, setDateRight] = useState(getPlusOneMonth(currDate));
   const offGridRightDate = getPlusOneMonth(dateRight);
   // console.log('date left: ', dateLeft.toLocaleString('default', { month: 'long', year: 'numeric' }));
-  useEffect(() => {
-    firstRender.current = false;
-  }, [dateLeft]);
+  // useEffect(() => {
+  //   firstRender.current = false;
+  // }, [dateLeft]);
   function decreaseMonth() {
-    // const today = new Date();
-    // const nextLeftDate = forwardRender ? dateRight : offGridLeftDate;
-    // if (offGridLeftDate.getMonth() > today.getMonth() || offGridLeftDate.getYear() > today.getYear()) {
-    //   setDateLeft(new Date(nextLeftDate));
-    //   setBackRender(true);
-    //   setForwardRender(false);
-    // }
     const nextDate = getMinusOneMonth(currDate);
     console.log(`currDate: ${nextDate.toLocaleString('default', { month: 'long', year: 'numeric' })}`);
     const today = new Date();
@@ -41,20 +30,13 @@ function Calendar({ props: { setCheckInDate, setCheckOutDate, checkInDateSet, se
       setBackRender(true);
     }
   }
-  function increaseMonth(bool) {
-    // const nextLeftDate = bool ? dateLeft : dateRight;
-    // return () => {
-    //   setBackRender(false);
-    //   setForwardRender(true);
-    //   setDateLeft(new Date(nextLeftDate));
-    // };
-
+  function increaseMonth() {
     // On first render or on present date, leftDate is equal to the desired date
-      // set offGridLeft to desired date - 1
-      // set right to desired date + 1
+    // set offGridLeft to desired date - 1
+    // set right to desired date + 1
     // every other render, right is equal to the desired date
-      // set right to the desired date
-      // sett off grid left to desired date - 2;
+    // set right to the desired date
+    // sett off grid left to desired date - 2;
     const nextDate = getPlusOneMonth(currDate);
     setCurrDate(nextDate);
     setDateRight(nextDate);
@@ -117,16 +99,14 @@ function Calendar({ props: { setCheckInDate, setCheckOutDate, checkInDateSet, se
       <div id={styles.offGridLeftBar}>
         <span className={`${styles.offGridLeftSpan} ${backRender ? styles.animateBack : ''}`} key={offGridLeftDate.getTime() - 2}>{`${offGridLeftDate.toLocaleString('default', { month: 'long', year: 'numeric' })}`}</span>
       </div>
-      {!(firstRender.current)
-        && <CalendarDates key={offGridLeftDate.getTime()} side="offGridLeft" currMonth={offGridLeftDate.getMonth()} dates={createDatesArray(offGridLeftDate)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} checkInDate={checkInDate} checkOutDate={checkOutDate} focusedDate={focusedDate} setFocusedDate={setFocusedDate} firstRender={firstRender.current} forwardRender={forwardRender} backRender={backRender} />}
+      <CalendarDates key={offGridLeftDate.getTime()} side="offGridLeft" currMonth={offGridLeftDate.getMonth()} dates={createDatesArray(offGridLeftDate)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} setCheckingDatesSet={setCheckingDatesSet} checkInDate={checkInDate} checkOutDate={checkOutDate} focusedDate={focusedDate} setFocusedDate={setFocusedDate} forwardRender={forwardRender} backRender={backRender} />
 
-      <CalendarDates key={offGridLeftDate.getTime() + 1} side="left" currMonth={dateLeft.getMonth()} dates={createDatesArray(dateLeft)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} checkInDate={checkInDate} checkOutDate={checkOutDate} focusedDate={focusedDate} setFocusedDate={setFocusedDate} firstRender={firstRender.current} forwardRender={forwardRender} backRender={backRender} />
-      <CalendarDates key={offGridRightDate.getTime() + 1} side="right" currMonth={dateRight.getMonth()} dates={createDatesArray(dateRight)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} checkInDate={checkInDate} checkOutDate={checkOutDate} focusedDate={focusedDate} setFocusedDate={setFocusedDate} firstRender={firstRender.current} forwardRender={forwardRender} backRender={backRender} />
+      <CalendarDates key={offGridLeftDate.getTime() + 1} side="left" currMonth={dateLeft.getMonth()} dates={createDatesArray(dateLeft)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} setCheckingDatesSet={setCheckingDatesSet} checkInDate={checkInDate} checkOutDate={checkOutDate} focusedDate={focusedDate} setFocusedDate={setFocusedDate} forwardRender={forwardRender} backRender={backRender} />
+      <CalendarDates key={offGridRightDate.getTime() + 1} side="right" currMonth={dateRight.getMonth()} dates={createDatesArray(dateRight)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} setCheckingDatesSet={setCheckingDatesSet} checkInDate={checkInDate} checkOutDate={checkOutDate} focusedDate={focusedDate} setFocusedDate={setFocusedDate} forwardRender={forwardRender} backRender={backRender} />
       <div id={styles.offGridRightBar}>
         <span className={`${styles.offGridRightSpan} ${forwardRender ? styles.animateForward : ''}`} key={offGridRightDate + 2}>{`${offGridRightDate.toLocaleString('default', { month: 'long', year: 'numeric' })}`}</span>
       </div>
-      {!(firstRender.current)
-        && <CalendarDates key={offGridRightDate.getTime()} side="offGridRight" currMonth={offGridRightDate.getMonth()} dates={createDatesArray(offGridRightDate)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} checkInDateSet={checkInDateSet} setCheckInDateSet={setCheckInDateSet} setCheckingDatesSet={setCheckingDatesSet} checkInDate={checkInDate} checkOutDate={checkOutDate} focusedDate={focusedDate} setFocusedDate={setFocusedDate} firstRender={firstRender.current} forwardRender={forwardRender} backRender={backRender} />}
+      <CalendarDates key={offGridRightDate.getTime()} side="offGridRight" currMonth={offGridRightDate.getMonth()} dates={createDatesArray(offGridRightDate)} setCheckInDate={setCheckInDate} setCheckOutDate={setCheckOutDate} setCheckingDatesSet={setCheckingDatesSet} checkInDate={checkInDate} checkOutDate={checkOutDate} focusedDate={focusedDate} setFocusedDate={setFocusedDate} forwardRender={forwardRender} backRender={backRender} />
     </div>
   );
 }

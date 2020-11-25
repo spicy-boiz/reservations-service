@@ -5,12 +5,10 @@ import Calendar from './Calendar.jsx';
 import DateSelection from './DateSelection.jsx';
 
 function CheckingDropDown({props: { setCheckInDate, setCheckOutDate, setCheckingDatesSet, checkingDatesSet, checkingDates, dropDownCheckingToggle, focusedDate, setFocusedDate } }) {
-  const [checkInDateSet, setCheckInDateSet] = useState(false);
-
   let lengthOfStay;
   let checkInDateStr;
   let checkOutDateStr;
-  if (checkingDatesSet) {
+  if (checkingDates[0] && checkingDates[1]) {
     lengthOfStay = (new Date(checkingDates[1] - checkingDates[0])).getDate();
     checkInDateStr = `${checkingDates[0].toLocaleString('default', { month: 'short' })}
       ${checkingDates[0].getDate()}, ${checkingDates[0].getFullYear()}`;
@@ -20,15 +18,12 @@ function CheckingDropDown({props: { setCheckInDate, setCheckOutDate, setChecking
   function clearDates() {
     setCheckInDate(undefined);
     setCheckOutDate(undefined);
-    setCheckInDateSet(false);
     setCheckingDatesSet(false);
     setFocusedDate(undefined);
   }
   const calendarProps = {
     setCheckInDate,
     setCheckOutDate,
-    checkInDateSet,
-    setCheckInDateSet,
     setCheckingDatesSet,
     checkInDate: checkingDates[0],
     checkOutDate: checkingDates[1],
@@ -40,7 +35,6 @@ function CheckingDropDown({props: { setCheckInDate, setCheckOutDate, setChecking
     setCheckInDate,
     setCheckOutDate,
     dropDownCheckingToggle,
-    setCheckInDateSet,
     focusedDate,
     setFocusedDate,
     setCheckingDatesSet,

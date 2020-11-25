@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './DateSelection.css';
 
-function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, setCheckInDate, setCheckOutDate, dropDownCheckingToggle, setCheckInDateSet, focusedDate, setFocusedDate, setCheckingDatesSet } }) {
+function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, setCheckInDate, setCheckOutDate, dropDownCheckingToggle, focusedDate, setFocusedDate, setCheckingDatesSet } }) {
   const checkInDefined = Boolean(checkingDates[0]);
   const checkOutDefined = Boolean(checkingDates[1]);
   const checkInDate = checkingDates[0];
@@ -58,7 +58,7 @@ function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, setChe
     if (targetValue === '') {
       if (checkingType === 'in') {
         setCheckInDate(undefined);
-        setCheckInDateSet(false);
+        // setCheckInDateSet(false);
         setFocusedDate(undefined);
       } else if (checkingType === 'out') {
         setCheckOutDate(undefined);
@@ -73,10 +73,10 @@ function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, setChe
       if (checkingType === 'in') {
         setCheckInDate(new Date(year, month, day));
         setFocusedDate(new Date(year, month, day));
-        setCheckInDateSet(true);
+        // setCheckInDateSet(true);
         e.target.children[0].blur();
         textInput.current.focus();
-      } else if (checkingType = 'out') {
+      } else if (checkingType === 'out') {
         setCheckOutDate(new Date(year, month, day));
         setFocusedDate(undefined);
         setCheckingDatesSet(true);

@@ -4,8 +4,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './CalendarDates.css';
 
-function CalendarDates({ dates, setCheckInDate, setCheckOutDate,
-  setCheckInDateSet, checkInDateSet, setCheckingDatesSet, side, checkInDate, checkOutDate, focusedDate, setFocusedDate, firstRender, backRender, forwardRender }) {
+function CalendarDates({ dates, setCheckInDate, setCheckOutDate, setCheckingDatesSet, side, checkInDate, checkOutDate, focusedDate, setFocusedDate, firstRender, backRender, forwardRender }) {
   const datesToHTML = dates.map((dateObj, index) => {
     if (dateObj !== '') {
       const checkInSecs = Boolean(checkInDate) ? checkInDate.getTime() : undefined;
@@ -104,10 +103,11 @@ function CalendarDates({ dates, setCheckInDate, setCheckOutDate,
     setFocusedDate(date);
   }
   function setCheckDate(date) {
-    if (!checkInDateSet) {
+    // if(checkInDateSet)
+    if (!checkInDate) {
       setFocusedDate(date);
       setCheckInDate(date);
-      setCheckInDateSet(true);
+      // setCheckInDateSet(true);
     } else {
       setCheckOutDate(date);
       setCheckingDatesSet(true);
