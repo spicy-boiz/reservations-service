@@ -2,15 +2,6 @@
   padding-top: 12px;
   position:relative;
 }
-.calendarDaysSpan.left.animate {
-  /* animation: rightSlide 0.35s 1 forwards; */
-}
-.calendarDaysSpan.right.animate {
-  /* animation: rightSlide 0.35s 1 forwards; */
-}
-.calendarDaysSpan.offGridRight.animate {
-  /* animation: offRightGridSlide 0.35s 1 forwards; */
-}
 .calendarDaysSpan.left {
   grid-column: 3 / span 1;
   grid-row: 2 / span 1;
@@ -100,12 +91,31 @@
   padding-bottom: 0px;
   padding-top: 1px;
 }
-
-@keyframes rightSlide {
+.calendarDaysSpan.left.animateForward, .calendarDaysSpan.right.animateForward {
+  animation: rightAndLeftSlideForward 0.35s 1 forwards;
+}
+.calendarDaysSpan.offGridRight.animateForward {
+  animation: offGridRightSlideForward 0.35s 1 forwards;
+}
+.calendarDaysSpan.left.animateBack, .calendarDaysSpan.right.animateBack {
+  animation: rightAndLeftSlideBack 0.35s 1 forwards;
+}
+.calendarDaysSpan.offGridLeft.animateBack {
+  animation: offGridLeftSlideBack 0.35s 1 forwards;
+}
+@keyframes rightAndLeftSlideForward {
   0% {right: 0px}
   100% {right: 319px}
 }
-@keyframes offGridRightSlide {
+@keyframes offGridRightSlideForward {
   0% {right: 0px}
   100% {right: 338px}
+}
+@keyframes rightAndLeftSlideBack {
+  0% {left: 0px}
+  100% {left: 319px}
+}
+@keyframes offGridLeftSlideBack {
+  0% {left: 0px}
+  100% {left: 335px}
 }
