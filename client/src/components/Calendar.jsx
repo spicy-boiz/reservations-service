@@ -5,8 +5,8 @@ import CalendarDates from './CalendarDates.jsx';
 import styles from './Calendar.css';
 
 function Calendar({ props: { setCheckInDate, setCheckOutDate, setCheckingDatesSet, checkInDate, checkOutDate, focusedDate, setFocusedDate } }) {
-  // const firstRender = useRef(true);
-  const startingDate = checkInDate || new Date();
+  const today = new Date();
+  const startingDate = checkInDate || today;
   const [forwardRender, setForwardRender] = useState(false);
   const [backRender, setBackRender] = useState(false);
   const [currDate, setCurrDate] = useState(startingDate);
@@ -14,15 +14,15 @@ function Calendar({ props: { setCheckInDate, setCheckOutDate, setCheckingDatesSe
   const dateLeft = getPlusOneMonth(offGridLeftDate);
   const [dateRight, setDateRight] = useState(getPlusOneMonth(currDate));
   const offGridRightDate = getPlusOneMonth(dateRight);
-  // console.log('date left: ', dateLeft.toLocaleString('default', { month: 'long', year: 'numeric' }));
-  // useEffect(() => {
-  //   firstRender.current = false;
-  // }, [dateLeft]);
+
+  const prevMonth = getMinusOneMonth(currDate);
+  const onPresentMonth = prevMonth.getMonth() >= today.getMonth();
+  const notOnCurrYear = prevMonth.getFullYear() > today.getFullYear();
+  const moveBackBool = onPresentMonth || notOnCurrYear;
   function decreaseMonth() {
     const nextDate = getMinusOneMonth(currDate);
-    console.log(`currDate: ${nextDate.toLocaleString('default', { month: 'long', year: 'numeric' })}`);
-    const today = new Date();
-    if (nextDate.getMonth() >= today.getMonth() || nextDate.getFullYear() > today.getFullYear()) {
+    // console.log(`currDate: ${nextDate.toLocaleString('default', { month: 'long', year: 'numeric' })}`);
+    if (moveBackBool) {
       setOffGridLeftDate(nextDate);
       setCurrDate(nextDate);
       setDateRight(getPlusOneMonth(currDate));
@@ -53,16 +53,16 @@ function Calendar({ props: { setCheckInDate, setCheckOutDate, setCheckingDatesSe
     return new Date(tempDate.setMonth(date.getMonth() - 1));
   }
   function createDatesArray(dateObj) {
-    //create new array with 35 elements
+    // create new array with 35 elements
     const dates = new Array(41);
-    //set the date obj to the first day of the month
+    // set the date obj to the first day of the month
     const firstDayObj = new Date(dateObj.getFullYear(), dateObj.getMonth(), 1);
-    //get the day of the week of the first day of the month
+    // get the day of the week of the first day of the month
     const firstDay = firstDayObj.getDay();
-    //fill in the previous dates before that with empty strings
+    // fill in the previous dates before that with empty strings
     dates.fill('', 0, firstDay);
-    //set the first date to the index in the array that correponds off the day of the week
-    //loop through all of the days of the month and fill in the array
+    // set the first date to the index in the array that correponds off the day of the week
+    // loop through all of the days of the month and fill in the array
     let dayCount = 1;
     let arrayIndex = firstDay;
     let movingDate = new Date(dateObj.getFullYear(), dateObj.getMonth(), dayCount);
@@ -73,16 +73,10 @@ function Calendar({ props: { setCheckInDate, setCheckOutDate, setCheckingDatesSe
     }
     return dates;
   }
-  const keys = {
-    offGridLeft: offGridLeftDate.getTime() + (new Date()).getTime(),
-    dateleft: dateLeft.getTime() + (new Date()).getTime(),
-    dateRight: dateRight.getTime() + (new Date()).getTime(),
-    offGridRight: offGridRightDate.getTime() + (new Date()).getTime(),
-  }
   return (
     <div id={styles.calendarContainer}>
       <div id={styles.calendarBar}>
-        <button type="button" onClick={decreaseMonth}>
+        <button className={`${styles.backButton} ${moveBackBool ? '' : styles.disabled}`} type="button" onClick={decreaseMonth} disabled={!moveBackBool}>
           <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false">
             <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fill-rule="evenodd" />
           </svg>

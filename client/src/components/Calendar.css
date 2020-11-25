@@ -43,7 +43,12 @@
   height: 12px;
   width: 12px;
 }
-
+.backButton:disabled {
+  cursor: not-allowed !important;
+  color: rgb(221, 221, 221) !important;
+  background-color: white !important;
+  opacity: 0.1 !important;
+}
 .leftMonthSpan {
   padding-right: 170px;
 }
