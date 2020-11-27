@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 const express = require('express');
 const path = require('path');
-const Helpers = require('../db/models.js');
 const morgan = require('morgan');
+const Helpers = require('../db/models.js');
 
 const app = express();
 
