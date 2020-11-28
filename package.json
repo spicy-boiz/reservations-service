@@ -10,7 +10,7 @@
   "scripts": {
     "server": "node ./server/server.js",
     "seed": "node ./db/seed",
-    "build": "webpack --watch --config webpack.config.js -d eval-cheap-module-source-map",
+    "build": "webpack --watch --config webpack.config.js",
     "testBackend": "jest --config ./tests/backend/jestBackend.config.js",
     "testFrontend": "jest --config ./tests/frontend/jestFrontend.config.js",
     "tests": "jest"
