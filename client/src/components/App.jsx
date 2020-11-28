@@ -20,8 +20,10 @@ function App() {
   const [checkingDatesSet, setCheckingDatesSet] = useState(false);
   const [focusedDate, setFocusedDate] = useState(undefined);
   function getListingData() {
-    const listingID = window.location.pathname.split('/')[2];
-    return axios.get(`/api/listings/${Number.isNaN(listingID) ? 0 : listingID}`)
+    const listingID = window.location.pathname.split('/')[1];
+    console.log(listingID);
+    console.log(isNaN(listingID));
+    return axios.get(`/api/listings/${isNaN(listingID) ? 0 : listingID}`)
       .then((response) => {
         setListingData(response.data);
       })
