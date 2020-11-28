@@ -1,0 +1,24 @@
+#container {
+  display: flex;
+}
+#centerBody {
+  width: 653px;
+}
+#entireCabin {
+  border-bottom: 1px rgb(221,221,221) solid;
+}
+#entireHome {
+  border-bottom: 1px rgb(221,221,221) solid;
+}
+#contactHost {
+  border-bottom: 1px rgb(221,221,221) solid;
+}
+#sleepingArrangements {
+  border-bottom: 1px rgb(221,221,221) solid;
+}
+#amenities {
+  border-bottom: 1px rgb(221,221,221) solid;
+}
+#calendar {
+  border-bottom: 1px rgb(221,221,221) solid;
+}
