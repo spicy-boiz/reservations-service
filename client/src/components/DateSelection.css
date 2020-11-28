@@ -82,12 +82,12 @@ input, input:focus {
   border-radius: 0px 6px 6px 0px;
   background-color: transparent;
 }
-.checkIn.box.focused {
+/* .checkIn.box.focused {
   box-shadow: rgb(34, 34, 34) 0px 0px 0px 2px inset;
 }
 .checkOut.box.focused {
   box-shadow: rgb(34, 34, 34) 0px 0px 0px 2px inset;
-}
+} */
 .disabled, .disabled > ::placeholder {
   color: rgb(224, 224, 224) !important;
 }
