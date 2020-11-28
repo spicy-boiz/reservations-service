@@ -2,8 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Guests.css';
 
-function Guests({ dropdown, guestNum, infantsNum, guestsBool }) {
-  const combinedGuests = `${guestNum} ${guestNum > 1 ? 'guests' : 'guest'}`;
+function Guests({
+  props: {
+    dropdown, guestsNum, infantsNum, guestsBool,
+  },
+}) {
+  const combinedGuests = `${guestsNum} ${guestsNum > 1 ? 'guests' : 'guest'}`;
   const infants = `${infantsNum > 0 ? infantsNum > 1 ? `, ${infantsNum} infants` : `, ${infantsNum} infant` : ''}`;
   const combinedStr = `${combinedGuests}${infants}`;
   return (
@@ -29,8 +33,11 @@ function Guests({ dropdown, guestNum, infantsNum, guestsBool }) {
   );
 }
 Guests.propTypes = {
-  dropdown: PropTypes.func.isRequired,
-  guestNum: PropTypes.number.isRequired,
-  guestsBool: PropTypes.bool.isRequired,
+  props: PropTypes.shape({
+    dropdown: PropTypes.func.isRequired,
+    guestsNum: PropTypes.number.isRequired,
+    guestsBool: PropTypes.bool.isRequired,
+    infantsNum: PropTypes.number.isRequired,
+  }).isRequired,
 };
 export default Guests;

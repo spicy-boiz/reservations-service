@@ -1,7 +1,7 @@
 module.exports = {
   setupFilesAfterEnv: ['jest-enzyme'],
   testEnvironment: 'enzyme',
-  converageDirectory: 'coverage',
+  coverageDirectory: 'coverage',
   moduleFileExtensions: ['js', 'jsx', 'css'],
   testEnvironmentOptions: {
     enzymeAdapter: 'react16',
