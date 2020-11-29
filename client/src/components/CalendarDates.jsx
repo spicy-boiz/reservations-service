@@ -60,7 +60,7 @@ function CalendarDates({ dates, setCheckInDate, setCheckOutDate, setCheckingDate
       // Make the focused date have a unique class
       if (dateObj.getTime() === focusedDateSecs) {
         return (
-          <td key={dateObj.getTime()}className={`${styles.days} ${styles.highlight} ${styles.endFocus}`} onClick={() => setCheckDate(dateObj)} onMouseEnter={() => setHighlightDates(dateObj)} onMouseLeave={() => setFocusedDate(checkInDate)}>
+          <td key={dateObj.getTime()} className={`${styles.days} ${styles.highlight} ${styles.endFocus}`} onClick={() => setCheckDate(dateObj)} onMouseEnter={() => setHighlightDates(dateObj)} onMouseLeave={() => setFocusedDate(checkInDate)}>
             <div className={styles.innerCell}>
               {dateObj.getDate()}
             </div>
@@ -95,7 +95,7 @@ function CalendarDates({ dates, setCheckInDate, setCheckOutDate, setCheckingDate
         </td>
       );
     }
-    return <td />;
+    return <td key={index} />;
   });
   // useEffect(() => console.log(focusedDate, 'checkin: ', checkInDate), [focusedDate]);
   function setHighlightDates(date) {
@@ -116,36 +116,38 @@ function CalendarDates({ dates, setCheckInDate, setCheckOutDate, setCheckingDate
   return (
     <span className={`${styles.calendarDaysSpan} ${styles[side]} ${backRender ? styles.animateBack : ''} ${forwardRender ? styles.animateForward : ''}`}>
       <table className={`${styles.calendarDaysTable} ${styles[side]}`}>
-        <tr className={styles.dayNames}>
-          <th>Su</th>
-          <th>Mo</th>
-          <th>Tu</th>
-          <th>We</th>
-          <th>Th</th>
-          <th>Fr</th>
-          <th>Sa</th>
-        </tr>
-        <tr>
-          {datesToHTML.slice(0, 7)}
-        </tr>
-        <tr>
-          {datesToHTML.slice(7, 14)}
-        </tr>
-        <tr>
-          {datesToHTML.slice(14, 21)}
-        </tr>
-        <tr>
-          {datesToHTML.slice(21, 28)}
-        </tr>
-        <tr>
-          {datesToHTML.slice(28, 35)}
-        </tr>
-        {(datesToHTML[35] !== undefined)
-          && (
-            <tr>
-              {datesToHTML.slice(35, 41)}
-            </tr>
-          )}
+        <tbody>
+          <tr className={styles.dayNames}>
+            <th>Su</th>
+            <th>Mo</th>
+            <th>Tu</th>
+            <th>We</th>
+            <th>Th</th>
+            <th>Fr</th>
+            <th>Sa</th>
+          </tr>
+          <tr>
+            {datesToHTML.slice(0, 7)}
+          </tr>
+          <tr>
+            {datesToHTML.slice(7, 14)}
+          </tr>
+          <tr>
+            {datesToHTML.slice(14, 21)}
+          </tr>
+          <tr>
+            {datesToHTML.slice(21, 28)}
+          </tr>
+          <tr>
+            {datesToHTML.slice(28, 35)}
+          </tr>
+          {(datesToHTML[35] !== undefined)
+            && (
+              <tr>
+                {datesToHTML.slice(35, 41)}
+              </tr>
+            )}
+        </tbody>
       </table>
     </span>
   );
