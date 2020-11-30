@@ -31,7 +31,7 @@ function App() {
       });
   }
   function dropDownGuestsToggle() {
-    setCheckingBool(false); // TODO
+    setCheckingBool(false);
     setGuestsBool(!guestsBool);
   }
   function changeGuests(operation) {
@@ -43,7 +43,7 @@ function App() {
     }
   }
   function dropDownCheckingToggle() {
-    setGuestsBool(false); // TODO
+    setGuestsBool(false);
     setCheckingBool(!checkingBool);
   }
   useEffect(() => {
@@ -56,7 +56,12 @@ function App() {
   }, [checkingDatesSet]);
   const dateSelectionProps = {
     checkingDates: [checkInDate, checkOutDate],
+    setCheckInDate,
+    setCheckOutDate,
     dropDownCheckingToggle,
+    focusedDate,
+    setFocusedDate,
+    setCheckingDatesSet,
   };
   const checkingDropDownProps = {
     setCheckInDate,
@@ -67,6 +72,23 @@ function App() {
     dropDownCheckingToggle,
     focusedDate,
     setFocusedDate,
+  };
+  // const guestsProps = {
+  //   dropdown: dropDownGuestsToggle,
+  //   guestsNum,
+  //   changeGuests,
+  //   adultsNum,
+  //   setAdultsNum,
+  //   childrenNum,
+  //   setChildrenNum,
+  //   infantsNum,
+  //   setInfantsNum,
+  // };
+  const guestsProps = {
+    dropdown: dropDownGuestsToggle,
+    guestsNum,
+    infantsNum,
+    guestsBool,
   };
   return (
     <div className={styles.mainContainer}>
@@ -90,7 +112,7 @@ function App() {
         <DateSelection onDropdown={false} dateSelectionProps={dateSelectionProps} />
         {checkingBool && (
           <CheckingDropDown props={checkingDropDownProps} />)}
-        <Guests dropdown={dropDownGuestsToggle} guestNum={guestsNum} infantsNum={infantsNum} guestsBool={guestsBool} />
+        <Guests props={guestsProps} />
         {guestsBool && (
           <GuestsDropDown dropdown={dropDownGuestsToggle} changeGuests={changeGuests} adultsNum={adultsNum} setAdultsNum={setAdultsNum} childrenNum={childrenNum} setChildrenNum={setChildrenNum} infantsNum={infantsNum} setInfantsNum={setInfantsNum} />
         )}
