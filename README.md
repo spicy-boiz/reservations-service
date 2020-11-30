@@ -1,7 +1,10 @@
 # Ailpup
 
 Reservations component for a vacation rental marketplace site
-
+<img src="https://ailpup-fec-reservations.s3-us-west-1.amazonaws.com/WholeSite.png" height="525">
+<img src="https://ailpup-fec-reservations.s3-us-west-1.amazonaws.com/CalendarComponent.png" height="325">
+<img src="https://ailpup-fec-reservations.s3-us-west-1.amazonaws.com/FeesComponent.png" height="325">
+<img src="https://ailpup-fec-reservations.s3-us-west-1.amazonaws.com/GuestsComponent.png" height="325">
 ## Related Projects
 
   - https://github.com/spicy-boiz/photo-carousel-service
