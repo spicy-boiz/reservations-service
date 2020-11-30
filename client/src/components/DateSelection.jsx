@@ -58,7 +58,6 @@ function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, setChe
     if (targetValue === '') {
       if (checkingType === 'in') {
         setCheckInDate(undefined);
-        // setCheckInDateSet(false);
         setFocusedDate(undefined);
       } else if (checkingType === 'out') {
         setCheckOutDate(undefined);
@@ -73,7 +72,6 @@ function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, setChe
       if (checkingType === 'in') {
         setCheckInDate(new Date(year, month, day));
         setFocusedDate(new Date(year, month, day));
-        // setCheckInDateSet(true);
         e.target.children[0].blur();
         textInput.current.focus();
       } else if (checkingType === 'out') {
@@ -90,7 +88,6 @@ function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, setChe
           <span className={`${styles.checkIn} ${styles.box} ${focusedCheckIn ? styles.focused : ''}`}>
             <label htmlFor="checkIn">
               <div className={styles.checkLargeText}>Check-In</div>
-              {/* <div className={styles.checkSmallText}>{checkInDefined ? checkInDateStr : 'Add date'}</div> */}
               <form onSubmit={(e) => submitCheckIn(e)}>
                 <input id="checkIn" placeholder={focusedCheckIn ? "MM/DD/YYYY" : "Add date"} type="text" onFocus={flipCheckInFocus} onBlur={(e) => (flipCheckInFocus(e))} value={checkInInput} onChange={(e) => setCheckInInput(e.target.value)} autoFocus={!checkInDefined} autoComplete="off"></input>
               </form>
@@ -104,7 +101,6 @@ function DateSelection({ onDropdown, dateSelectionProps: { checkingDates, setChe
                 : styles.disabled}>
                 <input id="checkOut" ref={textInput} placeholder={focusedCheckOut ? "MM/DD/YYYY" : "Add date"} type="text" value={checkOutInput} onFocus={flipCheckOutFocus} onBlur={flipCheckOutFocus} value={checkOutInput} onChange={(e) => setCheckOutInput(e.target.value)} disabled={checkInDate ? false : true} autoFocus={checkInDefined} autoComplete="off" />
               </form>
-              {/* <div className={styles.checkSmallText}>{checkOutDefined ? checkOutDateStr : 'Add date'}</div> */}
             </label>
           </span>
         </div>

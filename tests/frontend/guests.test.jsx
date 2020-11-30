@@ -49,4 +49,18 @@ describe('<Guests />', () => {
     wrapper.find(`#${stylesDropdown.closeButton}`).simulate('click');
     expect(wrapper.find(GuestsDropDown)).toHaveLength(0);
   });
+  it('Changes the count correctly after incrementing and decrementing', () => {
+    const wrapper = mount(<App />);
+    wrapper.find(Guests).simulate('click');
+    wrapper.find(`.${stylesDropdown.addButton}`).at(0).simulate('click');
+    wrapper.find(`.${stylesDropdown.addButton}`).at(0).simulate('click');
+    wrapper.find(`.${stylesDropdown.addButton}`).at(1).simulate('click');
+    wrapper.find(`.${stylesDropdown.addButton}`).at(2).simulate('click');
+    expect(wrapper.find(`#${stylesGuests.guestsString}`).text()).toEqual('4 guests, 1 infant');
+    wrapper.find(`.${stylesDropdown.minusButton}`).at(0).simulate('click');
+    wrapper.find(`.${stylesDropdown.minusButton}`).at(0).simulate('click');
+    wrapper.find(`.${stylesDropdown.minusButton}`).at(1).simulate('click');
+    wrapper.find(`.${stylesDropdown.minusButton}`).at(2).simulate('click');
+    expect(wrapper.find(`#${stylesGuests.guestsString}`).text()).toEqual('1 guest');
+  });
 });

@@ -16,7 +16,7 @@ function CalendarDates({ dates, setCheckInDate, setCheckOutDate, setCheckingDate
       if (dateObj.getTime() === checkInSecs) {
         const days_highlight_checkIn = `${styles.days} ${styles.highlight} ${styles.checkIn} ${focusedCheckIn}`;
         return (
-          <td key={dateObj.getTime()} className={days_highlight_checkIn} onMouseEnter={bothDatesSet ? '' : () => setHighlightDates(dateObj)} onMouseLeave={bothDatesSet ? '' : () => setFocusedDate(checkInDate)}>
+          <td key={dateObj.getTime()} className={days_highlight_checkIn} onMouseEnter={bothDatesSet ? () => { } : () => setHighlightDates(dateObj)} onMouseLeave={bothDatesSet ? () => { } : () => setFocusedDate(checkInDate)}>
             <div className={`${styles.innerCell} ${styles.filled}`}>
               {dateObj.getDate()}
             </div>
@@ -26,7 +26,7 @@ function CalendarDates({ dates, setCheckInDate, setCheckOutDate, setCheckingDate
       if (dateObj.getTime() === checkOutSecs) {
         const days_highlight_checkOut = `${styles.days} ${styles.highlight} ${styles.checkOut}`;
         return (
-          <td key={dateObj.getTime()} className={days_highlight_checkOut} onMouseEnter={() => setHighlightDates(dateObj)} onMouseLeave={bothDatesSet ? '' : () => setFocusedDate(checkInDate)}>
+          <td key={dateObj.getTime()} className={days_highlight_checkOut} onMouseEnter={() => setHighlightDates(dateObj)} onMouseLeave={bothDatesSet ? () => { } : () => setFocusedDate(checkInDate)}>
             <div className={`${styles.innerCell} ${styles.filled}`}>
               {dateObj.getDate()}
             </div>
