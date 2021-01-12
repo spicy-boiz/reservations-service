@@ -1,6 +1,6 @@
 # Ailpup
 
-Reservations component for a vacation rental marketplace site
+Reservations micro-service for a vacation rental marketplace site
 <div align="center">
   <img src="https://ailpup-fec-reservations.s3-us-west-1.amazonaws.com/WholeSite.png" height="450">
 </div>
@@ -15,11 +15,6 @@ Reservations component for a vacation rental marketplace site
   - https://github.com/spicy-boiz/photo-carousel-service
   - https://github.com/spicy-boiz/places-to-stay-service
   - https://github.com/spicy-boiz/reviews-service
-
-## Table of Contents
-
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
 
 ## Usage
 From within the root directory:
